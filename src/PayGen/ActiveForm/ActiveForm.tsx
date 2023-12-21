@@ -8,7 +8,7 @@ import {
 import { CardContent, CardFooter } from '@components/card'
 import { Form, FormField } from '@components/form'
 import { Loading } from '@components/loading'
-import { qe } from '../../utils/helpers'
+import { qe } from '@utils/helpers'
 import { checkoutInputs } from '../fields'
 import { Submit } from '../styled'
 import { FieldItemProps, FormProps } from './types'

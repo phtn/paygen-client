@@ -6,7 +6,7 @@ import {
 	SelectLabel,
 	SelectTrigger,
 	SelectValue,
-} from '../../components/select'
+} from '@components/select'
 
 export interface Item {
 	value: string

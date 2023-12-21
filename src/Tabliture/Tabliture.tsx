@@ -1,6 +1,7 @@
 import { Tabs } from '@radix-ui/themes'
-import { Content, Login, Reports, Settings, Tab, Trigger } from './styled'
+import { Content, Reports, Settings, Tab, Trigger } from './styled'
 import PayGen from '../PayGen'
+import User from '../User'
 
 const Tabliture = () => (
 	<Tab defaultValue='home'>
@@ -22,9 +23,7 @@ const Tabliture = () => (
 				<span>Edit your profile or update contact information.</span>
 			</Settings>
 
-			<Login>
-				<span>Login to your account.</span>
-			</Login>
+			<User />
 		</Content>
 	</Tab>
 )

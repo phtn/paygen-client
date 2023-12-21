@@ -1,4 +1,4 @@
-import { PaymentResponse } from 'src/sources/payment'
+import { PaymentResponse } from '@sources/payment'
 
 export type ResultProps = {
 	values: PaymentResponse

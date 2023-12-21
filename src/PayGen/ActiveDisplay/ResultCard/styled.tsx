@@ -7,9 +7,10 @@ import { decimal, extractFileType, transformDate } from 'src/utils/helpers'
 import styled from 'styled-components'
 import tw from 'tailwind-styled-components'
 
-const Result = tw(Card)`
-  h-[calc(100vh-375px)] overflow-hidden bg-transparent rounded-xl
+const ResultWrap = tw(Card)`
+  container h-[calc(100vh-375px)] overflow-hidden bg-transparent rounded-xl
 `
+const Result = styled(ResultWrap)``
 
 type PressableProps = {
 	children?: ReactNode
@@ -27,7 +28,7 @@ const Content = tw(Flex)`
 
 const Pressable = ({ content, label, onClick }: PressableProps) => (
 	<Card
-		className='flex-auto '
+		className='flex-auto article'
 		variant='surface'
 		asChild>
 		<button onClick={onClick}>

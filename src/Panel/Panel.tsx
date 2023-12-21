@@ -1,5 +1,5 @@
 import { useTheme } from 'next-themes'
-import { qe } from '../utils/helpers'
+import { qe } from '@utils/helpers'
 import { Dark, Item, Light, Mode, Wrap } from './styled'
 
 const Panel = () => {

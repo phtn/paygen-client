@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react'
-import { PaymentResponse } from 'src/sources/payment'
-import ResultCard from './ResultCard'
+import { PaymentResponse } from '@sources/payment'
+import { qe } from '@utils/helpers'
 import { Display, PayGenLogo } from './styled'
-import { qe } from 'src/utils/helpers'
+import ResultCard from './ResultCard'
 
 type CustomerData = {
 	data: PaymentResponse | undefined

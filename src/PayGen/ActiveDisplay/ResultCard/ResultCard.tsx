@@ -1,4 +1,4 @@
-import { useCopy } from 'src/utils/hooks'
+import { useCopy } from '@utils/hooks'
 import { ResultProps } from './types'
 import { EmailContent, Footer, Top, Result, Mid, FileItem } from './styled'
 import { useAttachmentHandler } from './hooks'
