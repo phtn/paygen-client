@@ -14,11 +14,29 @@ export const toggleState = (
 	setState((prevState) => !prevState)
 }
 
-export const formatPhone = (phoneNumber: string) => {
-	const regex = /^0|^(63)|\D/g
-	if (phoneNumber) {
-		const formattedNumber = phoneNumber.replace(regex, '')
-		return `+63${formattedNumber}`
+export const decimal = (
+	num: string | number | undefined,
+	digits: number
+): string => {
+	if (num === undefined) return '0.00'
+	const parsedNumber = typeof num === 'string' ? parseFloat(num) : num
+	const formattedNumber = parsedNumber.toLocaleString('en-US', {
+		minimumFractionDigits: digits,
+		maximumFractionDigits: digits,
+	})
+	return formattedNumber
+}
+
+export const transformDate = (dateString: string): string => {
+	const date = new Date(dateString)
+	const options: Intl.DateTimeFormatOptions = {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+		hour: 'numeric',
+		minute: 'numeric',
+		second: 'numeric',
+		timeZone: 'UTC',
 	}
-	return ''
+	return date.toLocaleString('en-US', options)
 }

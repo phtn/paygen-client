@@ -1,33 +1,28 @@
-import { Button } from '@radix-ui/themes'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { PaymentResponse } from 'src/sources/payment'
+import ResultCard from './ResultCard'
+import { Display, PayGenLogo } from './styled'
+import { qe } from 'src/utils/helpers'
 
 type CustomerData = {
-	data: PaymentResponse
+	data: PaymentResponse | undefined
 }
 const ActiveDisplay = ({ data }: CustomerData) => {
-	const [invoiceURL, setInvoiceURL] = useState('')
-	const [details, setDetails] = useState<PaymentResponse>()
+	const [values, setValues] = useState<PaymentResponse>({} as PaymentResponse)
 
 	useEffect(() => {
-		// const { invoice_url, external_id, id } = data
-		const values = Object.values(data)[0]
-		setInvoiceURL(values.invoice_url)
-		setDetails(values)
+		if (data) {
+			setValues(data as PaymentResponse)
+		}
 	}, [data])
-	return (
-		<div className='border-[0px] border-slate-600 rounded-lg p-6 bg-[url("/meteor.svg")] bg-cover items-center justify-center flex'>
-			{/* <code className='text-[12px]'>{JSON.stringify(data)}</code> */}
-			<div className='w-full items-center justify-between border h-[300px]'>
-				<Button size={'3'}>{invoiceURL}</Button>
-				<Button
-					variant='soft'
-					size={'3'}>
-					Invoice Number: {details?.external_id}
-				</Button>
-			</div>
-			<span className='bg-teal-500 h-14 rounded text-[1rem]'></span>
-		</div>
-	)
+
+	const Options = useCallback(() => {
+		const result = Object.keys(values).length > 0
+		const options = qe(<ResultCard values={values} />, <PayGenLogo />)
+		return <Display>{options.get(result)}</Display>
+	}, [values])
+
+	return <Options />
 }
+
 export default ActiveDisplay

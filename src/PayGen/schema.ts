@@ -6,7 +6,7 @@ export const checkoutSchema = z.object({
 		.min(8, {
 			message: 'ISO Number is 8 digits.',
 		})
-		.max(25),
+		.max(8),
 	policy_number: z
 		.string()
 		.min(16, {
@@ -15,34 +15,34 @@ export const checkoutSchema = z.object({
 		.max(25),
 	given_names: z
 		.string()
-		.min(2, {
+		.min(1, {
 			message: 'Name must be at least 2 characters.',
 		})
 		.max(25),
 	surname: z
 		.string()
-		.min(2, {
+		.min(1, {
 			message: 'Name must be at least 2 characters.',
 		})
 		.max(25),
-	email: z
-		.string()
-		.min(2, {
-			message: 'Invalid Email.',
-		})
-		.max(35),
+	email: z.string().email({
+		message: 'Invalid Email.',
+	}),
 	mobile_number: z
 		.string()
 		.min(10, {
 			message: 'Invalid Phone Number',
 		})
-		.max(14),
+		.max(13),
 	amount: z.string().min(3),
-	agent: z.string().min(3),
-	itemName: z.string().min(4).optional(),
-	itemQty: z.string().min(1).optional(),
-	itemPrice: z.string().min(3).optional(),
-	itemCat: z.string().min(4).optional(),
-	feeType: z.string().optional(),
-	feeAmount: z.string().min(3).optional(),
+	agent_name: z.string().max(25),
+	assured_name: z.string().min(3).max(25),
+	item_name: z.string().optional(),
+	item_quantity: z.string().optional(),
+	item_price: z.string().optional(),
+	item_category: z.string().optional(),
+	fee_type: z.string().optional(),
+	fee_amount: z.string().optional(),
 })
+
+export type CheckoutSchema = z.infer<typeof checkoutSchema>

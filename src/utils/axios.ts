@@ -17,7 +17,6 @@ const headers = {
 	'Content-Type': 'application/json',
 	'Access-Control-Allow-Headers': 'Content-Type',
 	'Access-Control-Allow-Origin': 'http://localhost:5173',
-	'Access-Control-Allow-Methods': 'POST',
 }
 export const paymentConfig = {
 	method: 'POST',
@@ -27,4 +26,22 @@ export const paymentConfig = {
 export const retrieveConfig = {
 	method: 'GET',
 	headers,
+}
+
+const statusConfig = {
+	method: 'GET',
+	headers,
+}
+
+export const serverStatus = async () => {
+	const axiosInstance = createAxiosInstance(statusConfig)
+	try {
+		const data = await axiosInstance.head<any>(
+			'http://localhost:4000',
+			statusConfig
+		)
+		return data
+	} catch (err) {
+		return err
+	}
 }

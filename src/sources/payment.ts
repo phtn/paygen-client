@@ -46,6 +46,7 @@ export interface PaymentResponse {
 	available_ewallets: Record<string, string>[]
 	available_qr_codes: Record<string, string>[]
 	available_direct_debits: Record<string, string>[]
+	items: LineItem[]
 }
 
 export const url = '/v2/invoices'

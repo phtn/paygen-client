@@ -1,29 +1,32 @@
 import { Home } from '../Tabliture/styled'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { checkoutSchema } from './schema'
+import { CheckoutSchema, checkoutSchema } from './schema'
 import { checkoutDefaults } from './fields'
-import useCheckout from './hooks'
 
 import ActiveForm from './ActiveForm'
 import { Container, GridContent, Title, TitleContainer } from './styled'
 import ActiveDisplay from './ActiveDisplay'
 import { useCallback } from 'react'
-import { PaymentResponse } from 'src/sources/payment'
+import { useTRPCPayGen } from './utils'
+import { CardTitle } from '@components/card'
 
 const PayGen = () => {
-	const { loading, onGenerate, customerData } = useCheckout()
-	const form = useForm<z.infer<typeof checkoutSchema>>({
+	const form = useForm<CheckoutSchema>({
 		resolver: zodResolver(checkoutSchema),
 		defaultValues: checkoutDefaults,
 	})
 
-	const onSubmit = (values: z.infer<typeof checkoutSchema>) => {
-		onGenerate(values)
+	const { createPaymentLink, loading, payload } = useTRPCPayGen()
+
+	const onSubmit = (values: CheckoutSchema) => {
+		createPaymentLink(values)
 		form.reset(checkoutDefaults)
 	}
-	const Id = useCallback(() => <span>{''}</span>, [customerData])
+	const Id = useCallback(
+		() => <CardTitle>{payload?.items[0].name}</CardTitle>,
+		[payload]
+	)
 
 	return (
 		<Home>
@@ -38,7 +41,7 @@ const PayGen = () => {
 						loading={loading}
 						onSubmit={onSubmit}
 					/>
-					<ActiveDisplay data={customerData as PaymentResponse} />
+					<ActiveDisplay data={payload} />
 				</GridContent>
 			</Container>
 		</Home>

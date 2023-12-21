@@ -1,4 +1,5 @@
 import { HTMLInputTypeAttribute } from 'react'
+import { CheckoutSchema } from './schema'
 
 export type CheckoutName =
 	| 'iso_number'
@@ -8,13 +9,14 @@ export type CheckoutName =
 	| 'email'
 	| 'mobile_number'
 	| 'amount'
-	| 'agent'
-	| 'itemName'
-	| 'itemQty'
-	| 'itemPrice'
-	| 'itemCat'
-	| 'feeType'
-	| 'feeAmount'
+	| 'assured_name'
+	| 'agent_name'
+	| 'item_name'
+	| 'item_quantity'
+	| 'item_price'
+	| 'item_category'
+	| 'fee_type'
+	| 'fee_amount'
 
 export type CheckoutInput = {
 	name: CheckoutName
@@ -75,49 +77,56 @@ export const checkoutInputs: CheckoutInput[] = [
 		type: 'number',
 	},
 	{
-		name: 'agent',
+		name: 'assured_name',
+		label: 'Assured Name',
+		placeholder: 'Name of Policy Holder',
+		inputType: 'input',
+		type: 'text',
+	},
+	{
+		name: 'agent_name',
 		label: 'Agent Name',
 		placeholder: 'Name of the agent',
 		inputType: 'input',
 		type: 'text',
 	},
 	{
-		name: 'itemName',
+		name: 'item_name',
 		label: 'Item Name',
 		placeholder: 'Item name',
 		inputType: 'input',
 		type: 'text',
 	},
 	{
-		name: 'itemQty',
+		name: 'item_quantity',
 		label: 'Item Quantity',
 		placeholder: 'Item Quantity',
 		inputType: 'input',
 		type: 'number',
 	},
 	{
-		name: 'itemPrice',
+		name: 'item_price',
 		label: 'Item Price',
 		placeholder: 'Item Price',
 		inputType: 'input',
 		type: 'number',
 	},
 	{
-		name: 'itemCat',
+		name: 'item_category',
 		label: 'Item Category',
 		placeholder: 'Item Category',
 		inputType: 'input',
 		type: 'text',
 	},
 	{
-		name: 'feeType',
+		name: 'fee_type',
 		label: 'Fee Type',
 		placeholder: 'Fee Type',
 		inputType: 'select',
 		type: 'text',
 	},
 	{
-		name: 'feeAmount',
+		name: 'fee_amount',
 		label: 'Fee Amount',
 		placeholder: 'Fee Amount',
 		inputType: 'input',
@@ -125,7 +134,7 @@ export const checkoutInputs: CheckoutInput[] = [
 	},
 ]
 
-export const checkoutDefaults = {
+export const checkoutDefaults: CheckoutSchema = {
 	iso_number: '01234567',
 	policy_number: 'GC-PCV-100930489',
 	given_names: 'Olivia',
@@ -133,11 +142,12 @@ export const checkoutDefaults = {
 	email: 'olivia@ponton.com',
 	mobile_number: '09162344333',
 	amount: '1000',
-	agent: 'Manuel',
-	itemName: 'E-Policy',
-	itemQty: '1',
-	itemPrice: '1000',
-	itemCat: 'Car Insurance',
-	feeType: 'Processing',
-	feeAmount: '500',
+	assured_name: 'assured name',
+	agent_name: 'Manuel',
+	item_name: 'E-Policy',
+	item_quantity: '1',
+	item_price: '1000',
+	item_category: 'Car Insurance',
+	fee_type: 'Processing',
+	fee_amount: '500',
 }

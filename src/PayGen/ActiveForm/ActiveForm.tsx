@@ -24,11 +24,7 @@ const ActiveForm = ({ form, onSubmit, loading }: FormProps) => {
 			<span className='font-bold'>Generate Link</span>
 		)
 		return (
-			<Submit
-				isValid={isValid}
-				loading={loading}>
-				{options.get(loading)}
-			</Submit>
+			<Submit disabled={!isValid || loading}>{options.get(loading)}</Submit>
 		)
 	}, [loading, isValid])
 
@@ -38,12 +34,12 @@ const ActiveForm = ({ form, onSubmit, loading }: FormProps) => {
 	)
 
 	const primaryInputs = checkoutInputs.slice(0, 8)
-	const secondaryInputs = checkoutInputs.slice(9)
+	const secondaryInputs = checkoutInputs.slice(8)
 
 	return (
 		<Form {...form}>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<CardContent className='grid grid-cols-2 gap-4'>
+				<CardContent className='grid grid-cols-2 gap-x-4 gap-y-8'>
 					{primaryInputs.map((item) => (
 						<FormField
 							disabled={loading}

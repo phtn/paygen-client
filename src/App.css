@@ -3,5 +3,5 @@
 	transition: filter 250ms;
 }
 .logo:hover {
-	filter: drop-shadow(0 1rem 0.95rem #14a494ff);
+	filter: drop-shadow(0 1rem 0.95rem #fdba74ff);
 }

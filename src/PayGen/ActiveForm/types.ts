@@ -1,22 +1,22 @@
 import { HTMLInputTypeAttribute } from 'react'
 import { UseFormReturn, ControllerRenderProps } from 'react-hook-form'
 import { CheckoutName, CheckoutInput } from '../fields'
-import { CheckoutValues } from '../types'
+import { CheckoutSchema } from '../schema'
 
 export type FormProps = {
-	form: UseFormReturn<CheckoutValues>
+	form: UseFormReturn<CheckoutSchema>
 	loading: boolean
-	onSubmit: (values: CheckoutValues) => void
+	onSubmit: (values: CheckoutSchema) => void
 }
 export type InputFieldProps = {
 	label: string
 	placeholder: string
-	field: ControllerRenderProps<CheckoutValues>
+	field: ControllerRenderProps<CheckoutSchema>
 	type: HTMLInputTypeAttribute
 	name: CheckoutName
 }
 
 export type FieldItemProps = {
-	field: ControllerRenderProps<CheckoutValues>
+	field: ControllerRenderProps<CheckoutSchema>
 	item: CheckoutInput
 }

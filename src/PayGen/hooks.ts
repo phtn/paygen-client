@@ -8,7 +8,6 @@ import { PaymentResponse } from 'src/sources/payment'
 const useGenerate = () => {
 	const [loading, setLoading] = useState(false)
 	const [customerData, setCustomerData] = useState<PaymentResponse>()
-	const [custId, setCustId] = useState('')
 
 	const onGenerate = async (values: z.infer<typeof checkoutSchema>) => {
 		setLoading(true)
@@ -23,12 +22,10 @@ const useGenerate = () => {
 			setLoading(false)
 			const endTime = performance.now()
 			const elapsedTime = endTime - startTime
-			toast(`Done in ${elapsedTime.toFixed(2)} milliseconds`)
+			toast.success(`Done in ${(elapsedTime / 1000).toFixed(2)} seconds`)
 
 			if (response.status === 200) {
-				setCustId('')
 				setCustomerData(response)
-				console.log(response)
 			}
 		}
 
@@ -37,7 +34,7 @@ const useGenerate = () => {
 			.then(Ok, Err)
 	}
 
-	return { loading, onGenerate, customerData, custId }
+	return { loading, onGenerate, customerData }
 }
 
 export default useGenerate

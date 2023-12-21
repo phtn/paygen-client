@@ -11,6 +11,8 @@ import {
 } from 'react-hook-form'
 import { cn } from '../utils/cn'
 import { Label } from './label'
+import { Flex } from '@radix-ui/themes'
+import { InfoCircledIcon } from '@radix-ui/react-icons'
 
 const Form = FormProvider
 
@@ -155,13 +157,16 @@ const FormMessage = React.forwardRef<
 	}
 
 	return (
-		<p
-			ref={ref}
-			id={formMessageId}
-			className={cn('text-sm font-medium text-destructive', className)}
-			{...props}>
-			{body}
-		</p>
+		<Flex className='items-center'>
+			<InfoCircledIcon className='text-orange-400 h-[14px] w-[14px] mr-1' />
+			<p
+				ref={ref}
+				id={formMessageId}
+				className={cn('text-[12px] text-orange-400', className)}
+				{...props}>
+				{body}
+			</p>
+		</Flex>
 	)
 })
 FormMessage.displayName = 'FormMessage'
