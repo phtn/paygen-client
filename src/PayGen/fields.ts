@@ -20,11 +20,11 @@ export type CheckoutName =
 
 export type CheckoutInput = {
 	name: CheckoutName
-
 	label: string
 	placeholder: string
 	inputType: 'input' | 'select'
 	type: HTMLInputTypeAttribute
+	alt: string
 }
 export const checkoutInputs: CheckoutInput[] = [
 	{
@@ -33,6 +33,7 @@ export const checkoutInputs: CheckoutInput[] = [
 		placeholder: 'ISO Number',
 		inputType: 'input',
 		type: 'text',
+		alt: 'file',
 	},
 	{
 		name: 'policy_number',
@@ -40,41 +41,47 @@ export const checkoutInputs: CheckoutInput[] = [
 		placeholder: 'Policy number',
 		inputType: 'input',
 		type: 'text',
+		alt: 'reader',
 	},
 	{
 		name: 'given_names',
-		label: 'First Names',
+		label: 'Payer Given Name',
 		placeholder: 'First name',
 		inputType: 'input',
 		type: 'text',
+		alt: 'name',
 	},
 	{
 		name: 'surname',
-		label: 'Last Name',
+		label: 'Payer Last Name',
 		placeholder: 'Last name',
 		inputType: 'input',
 		type: 'text',
+		alt: 'name',
 	},
 	{
 		name: 'mobile_number',
-		label: 'Phone Number',
+		label: 'Payer Phone Number',
 		placeholder: 'Phone',
 		inputType: 'input',
 		type: 'tel',
+		alt: 'mobile',
 	},
 	{
 		name: 'email',
-		label: 'Client Email address',
+		label: 'Payer Email Address',
 		placeholder: 'Email',
 		inputType: 'input',
 		type: 'email',
+		alt: 'email',
 	},
 	{
 		name: 'amount',
-		label: 'Total Amount',
+		label: 'Total Amount Due',
 		placeholder: '1,000.00',
 		inputType: 'input',
 		type: 'number',
+		alt: 'money',
 	},
 	{
 		name: 'assured_name',
@@ -82,6 +89,7 @@ export const checkoutInputs: CheckoutInput[] = [
 		placeholder: 'Name of Policy Holder',
 		inputType: 'input',
 		type: 'text',
+		alt: 'user',
 	},
 	{
 		name: 'agent_name',
@@ -89,6 +97,7 @@ export const checkoutInputs: CheckoutInput[] = [
 		placeholder: 'Name of the agent',
 		inputType: 'input',
 		type: 'text',
+		alt: 'name',
 	},
 	{
 		name: 'item_name',
@@ -96,6 +105,7 @@ export const checkoutInputs: CheckoutInput[] = [
 		placeholder: 'Item name',
 		inputType: 'input',
 		type: 'text',
+		alt: 'file',
 	},
 	{
 		name: 'item_quantity',
@@ -103,6 +113,7 @@ export const checkoutInputs: CheckoutInput[] = [
 		placeholder: 'Item Quantity',
 		inputType: 'input',
 		type: 'number',
+		alt: 'tokens',
 	},
 	{
 		name: 'item_price',
@@ -110,6 +121,7 @@ export const checkoutInputs: CheckoutInput[] = [
 		placeholder: 'Item Price',
 		inputType: 'input',
 		type: 'number',
+		alt: 'money',
 	},
 	{
 		name: 'item_category',
@@ -117,6 +129,7 @@ export const checkoutInputs: CheckoutInput[] = [
 		placeholder: 'Item Category',
 		inputType: 'input',
 		type: 'text',
+		alt: 'reader',
 	},
 	{
 		name: 'fee_type',
@@ -124,6 +137,7 @@ export const checkoutInputs: CheckoutInput[] = [
 		placeholder: 'Fee Type',
 		inputType: 'select',
 		type: 'text',
+		alt: 'file',
 	},
 	{
 		name: 'fee_amount',
@@ -131,6 +145,7 @@ export const checkoutInputs: CheckoutInput[] = [
 		placeholder: 'Fee Amount',
 		inputType: 'input',
 		type: 'number',
+		alt: 'money',
 	},
 ]
 
@@ -144,10 +159,10 @@ export const checkoutDefaults: CheckoutSchema = {
 	amount: '1000',
 	assured_name: 'assured name',
 	agent_name: 'Manuel',
-	item_name: 'E-Policy',
+	item_name: 'Insurance Policy',
 	item_quantity: '1',
 	item_price: '1000',
-	item_category: 'Car Insurance',
+	item_category: 'Auto Insurance',
 	fee_type: 'Processing',
-	fee_amount: '500',
+	fee_amount: '0',
 }

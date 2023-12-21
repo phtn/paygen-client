@@ -14,6 +14,7 @@ export type InputFieldProps = {
 	field: ControllerRenderProps<CheckoutSchema>
 	type: HTMLInputTypeAttribute
 	name: CheckoutName
+	alt: string
 }
 
 export type FieldItemProps = {

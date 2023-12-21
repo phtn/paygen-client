@@ -27,6 +27,11 @@ export const decimal = (
 	return formattedNumber
 }
 
+export const extractFileType = (input: string): string | null => {
+	const match = input.match(/\/(\w+)$/)
+	return match ? match[1] : null
+}
+
 export const transformDate = (dateString: string): string => {
 	const date = new Date(dateString)
 	const options: Intl.DateTimeFormatOptions = {

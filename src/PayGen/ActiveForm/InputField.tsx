@@ -8,7 +8,7 @@ import { InputFieldProps } from './types'
 import { Input } from '../../components/input'
 
 const InputField = (props: InputFieldProps) => {
-	const { label, placeholder, type, field } = props
+	const { label, placeholder, type, field, alt } = props
 	return (
 		<FormItem>
 			<FormLabel className='text-xs text-foreground flex items-center'>
@@ -17,8 +17,9 @@ const InputField = (props: InputFieldProps) => {
 			</FormLabel>
 			<FormControl>
 				<Input
-					placeholder={placeholder}
 					{...field}
+					alt={alt}
+					placeholder={placeholder}
 					type={type}
 				/>
 			</FormControl>

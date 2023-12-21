@@ -5,10 +5,31 @@ import {
 	PersonIcon,
 	MagnifyingGlassIcon,
 	LockClosedIcon,
+	IdCardIcon,
+	FileTextIcon,
+	ReaderIcon,
+	EnvelopeClosedIcon,
+	MobileIcon,
+	CardStackPlusIcon,
+	TokensIcon,
+	UploadIcon,
 } from '@radix-ui/react-icons'
 
 export interface InputProps
 	extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+const iconClassname = 'h-[16px] w-[16px] dark:text-orange-300 text-teal-500'
+const IconPrefix = [
+	{ name: 'user', icon: <PersonIcon className={iconClassname} /> },
+	{ name: 'name', icon: <IdCardIcon className={iconClassname} /> },
+	{ name: 'file', icon: <FileTextIcon className={iconClassname} /> },
+	{ name: 'reader', icon: <ReaderIcon className={iconClassname} /> },
+	{ name: 'email', icon: <EnvelopeClosedIcon className={iconClassname} /> },
+	{ name: 'mobile', icon: <MobileIcon className={iconClassname} /> },
+	{ name: 'money', icon: <CardStackPlusIcon className={iconClassname} /> },
+	{ name: 'tokens', icon: <TokensIcon className={iconClassname} /> },
+	{ name: 'upload', icon: <UploadIcon className={iconClassname} /> },
+]
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
 	({ className, type, ...props }, ref) => {
@@ -18,7 +39,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 					'flex h-10 items-center rounded-md border-[0.33px[] bg-gray-500/30  pl-3 text-sm ring-offset-teal-500 focus-within:ring-1 focus-within:ring-ring focus-within:ring-offset-1 placeholder:text-muted',
 					className
 				)}>
-				<MagnifyingGlassIcon className='h-[16px] w-[16px]' />
+				{
+					IconPrefix[IconPrefix.findIndex((item) => item.name === props.alt)]
+						.icon
+				}
 				<input
 					{...props}
 					type={type}

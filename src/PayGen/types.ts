@@ -6,11 +6,12 @@ export interface CheckoutValues {
 	email: string
 	mobile_number: string
 	amount: string
-	agent: string
-	itemName?: string
-	itemQty?: string
-	itemPrice?: string
-	itemCat?: string
-	feeType?: string
-	feeAmount?: string
+	agent_name: string
+	assured_name: string
+	item_name?: string
+	item_quantity?: string
+	item_price?: string
+	item_category?: string
+	fee_type?: string
+	fee_amount?: string
 }

@@ -10,6 +10,7 @@ const FieldItem = ({ field, item }: FieldItemProps) => {
 			placeholder={item.placeholder}
 			type={item.type}
 			name={item.name}
+			alt={item.alt}
 		/>
 	) : (
 		<SelectField

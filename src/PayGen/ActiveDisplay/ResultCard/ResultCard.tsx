@@ -1,10 +1,12 @@
 import { useCopy } from 'src/utils/hooks'
 import { ResultProps } from './types'
-import { ContentWrap, Footer, Top, Result, Mid } from './styled'
+import { EmailContent, Footer, Top, Result, Mid, FileItem } from './styled'
+import { useAttachmentHandler } from './hooks'
 
 const ResultCard = ({ values }: ResultProps) => {
 	const { amount, expiry_date, external_id, invoice_url } = values
 	const [_, copy] = useCopy()
+	const { files, handleFileChange, handleFileRemove } = useAttachmentHandler()
 
 	const handleCopyInvUrl = () => {
 		copy({ name: 'Payment Link', text: invoice_url as string })
@@ -19,6 +21,11 @@ const ResultCard = ({ values }: ResultProps) => {
 	const handleCopyExpiryDate = () => {
 		copy({ name: 'Expiry Date', text: external_id as string })
 	}
+
+	const handleSendEmail = () => {
+		return null
+	}
+
 	return (
 		<Result>
 			<Top
@@ -35,10 +42,25 @@ const ResultCard = ({ values }: ResultProps) => {
 				copyExpiryDate={handleCopyExpiryDate}
 			/>
 
-			<ContentWrap>
-				<pre>{JSON.stringify(values, null, 2)}</pre>
-			</ContentWrap>
-			<Footer onClick={() => null} />
+			<EmailContent
+				attachments={
+					files
+						? [...files].map((file, index) => (
+								<FileItem
+									index={index}
+									file={file}
+									key={file.name}
+									onRemove={handleFileRemove}
+								/>
+						  ))
+						: null
+				}
+			/>
+
+			<Footer
+				sendEmail={handleSendEmail}
+				fileChange={handleFileChange}
+			/>
 		</Result>
 	)
 }
