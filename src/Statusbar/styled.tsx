@@ -10,21 +10,21 @@ const InactiveIcon = tw(LinkBreak2Icon)`
 `
 
 const StatusLeft = tw.div`
-  w-[200px] h-[40px] flex items-center justify-between 
-  px-[14px]
+  md:w-[200px] h-[40px] flex items-center justify-between 
+  px-[14px] whitespace-nowrap
 `
 const StatusRight = tw.div`
-  w-[200px] h-[40px] flex items-center justify-end px-[14px]
+  md:w-[200px] h-[40px] flex items-center justify-end px-[14px]
 `
 
 const StatusLabel = tw.span`
-  text-[12px] tracking-wider font-medium dark:text-slate-500
+  text-[10px] ml-1 tracking-wide font-medium dark:text-slate-400
 `
 const ActiveStatus = () => (
 	<>
 		<ActiveIcon />
 		<StatusLabel>
-			<code>All systems normal</code>
+			<code>Online</code>
 		</StatusLabel>
 	</>
 )
@@ -33,7 +33,7 @@ const InactiveStatus = () => (
 	<>
 		<InactiveIcon />
 		<StatusLabel>
-			<code className='text-orange-600'>No Connection</code>
+			<code className='text-orange-600'>Offline</code>
 		</StatusLabel>
 		<GlobeIcon className='animate-pulse text-blue-400' />
 	</>

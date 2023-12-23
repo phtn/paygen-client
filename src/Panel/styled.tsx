@@ -15,17 +15,17 @@ const ModeButton = tw(IconButton)`
   group
 `
 
-const Mode = styled(ModeButton).attrs<{ mode?: string }>((p) => ({
+const Mode = styled(ModeButton).attrs<{ mode?: string }>({
 	size: '2',
-	variant: p.mode === 'dark' ? 'ghost' : 'solid',
-}))``
+	variant: 'ghost',
+})``
 
 const Item = tw.div`
   h-[40px] items-center justify-center flex
 `
 
 const Wrap = tw.div`
-  flex items-center justify-center w-[300px]
+  flex items-center justify-center md:w-[300px]
 `
 
 export { Dark, Item, Light, Mode, Wrap }

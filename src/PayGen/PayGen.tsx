@@ -8,7 +8,8 @@ import { useTRPCPayGen } from './hooks'
 import ActiveForm from './ActiveForm'
 import ActiveDisplay from './ActiveDisplay'
 import { CardTitle } from '@components/card'
-import { Container, GridContent, Header } from './styled'
+import { Container, GridContent } from './styled'
+import { Header } from '@components/header'
 
 const PayGen = () => {
 	const form = useForm<CheckoutSchema>({
@@ -30,7 +31,7 @@ const PayGen = () => {
 	return (
 		<Home>
 			<Container>
-				<Header>
+				<Header title='Generate Payment Link'>
 					<Id />
 				</Header>
 				<GridContent>

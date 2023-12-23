@@ -9,8 +9,11 @@ import {
 	VersionNumber,
 } from './styled'
 import { useCallback } from 'react'
+import { useAuth } from 'src/User/hooks'
 
 const Statusbar = () => {
+	const { user } = useAuth()
+
 	const Status = useCallback(() => {
 		const options = qe(<ActiveStatus />, <InactiveStatus />)
 		return <StatusLeft>{options.get(true)}</StatusLeft>
@@ -21,6 +24,7 @@ const Statusbar = () => {
 			<Status />
 			<Panel />
 			<StatusRight>
+				<span>{user?.uid}</span>
 				<VersionNumber />
 			</StatusRight>
 		</HStack>

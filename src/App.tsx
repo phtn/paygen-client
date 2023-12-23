@@ -1,11 +1,17 @@
-import './App.css'
-import Statusbar from './Statusbar/Statusbar'
+import Statusbar from './Statusbar'
 import Tabliture from './Tabliture'
 import { VStack } from './styled'
-const App = () => (
-	<VStack>
-		<Tabliture />
-		<Statusbar />
-	</VStack>
-)
+import './App.css'
+import { AuthProvider } from './lib/context'
+
+const App = () => {
+	return (
+		<AuthProvider>
+			<VStack>
+				<Tabliture />
+				<Statusbar />
+			</VStack>
+		</AuthProvider>
+	)
+}
 export default App

@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 				accentColor='teal'
 				grayColor='slate'
 				radius='small'
-				scaling='100%'>
+				scaling='90%'>
 				<App />
 				<Toaster />
 			</Theme>

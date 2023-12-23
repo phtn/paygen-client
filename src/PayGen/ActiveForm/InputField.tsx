@@ -7,7 +7,6 @@ const InputField = (props: InputFieldProps) => {
 	return (
 		<FormItem>
 			<FormLabel className='text-xs text-foreground flex items-center'>
-				{/* <Validate /> */}
 				{label}
 			</FormLabel>
 			<FormControl>

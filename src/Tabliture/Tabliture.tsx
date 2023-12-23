@@ -4,7 +4,7 @@ import PayGen from '../PayGen'
 import User from '../User'
 
 const Tabliture = () => (
-	<Tab defaultValue='home'>
+	<Tab defaultValue='login'>
 		<Tabs.List>
 			<Trigger value='home'>PayGen</Trigger>
 			<Trigger value='reports'>Reports</Trigger>

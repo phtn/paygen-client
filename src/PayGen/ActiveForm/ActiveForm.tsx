@@ -8,9 +8,9 @@ import {
 import { CardContent, CardFooter } from '@components/card'
 import { Form, FormField } from '@components/form'
 import { Loading } from '@components/loading'
+import { Submit, Label } from '@components/submit'
 import { qe } from '@utils/helpers'
 import { checkoutInputs } from '../fields'
-import { Submit } from '../styled'
 import { FieldItemProps, FormProps } from './types'
 import FieldItem from './FieldItem'
 
@@ -19,10 +19,7 @@ const ActiveForm = ({ form, onSubmit, loading }: FormProps) => {
 	const { isValid } = formState
 
 	const SubmitOptions = useCallback(() => {
-		const options = qe(
-			<Loading />,
-			<span className='font-bold'>Generate Link</span>
-		)
+		const options = qe(<Loading />, <Label>Generate Link</Label>)
 		return (
 			<Submit disabled={!isValid || loading}>{options.get(loading)}</Submit>
 		)
@@ -39,7 +36,7 @@ const ActiveForm = ({ form, onSubmit, loading }: FormProps) => {
 	return (
 		<Form {...form}>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<CardContent className='grid grid-cols-2 gap-x-4 gap-y-8'>
+				<CardContent className='grid grid-cols-2 md:gap-x-4 gap-x-2 gap-y-8'>
 					{primaryInputs.map((item) => (
 						<FormField
 							disabled={loading}
