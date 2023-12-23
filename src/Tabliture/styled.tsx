@@ -10,7 +10,7 @@ const Trigger = tw(Tabs.Trigger)`
   logo space-x-6 transition-all duration-400 dark:text-slate-500  
 `
 const ContentWrap = tw(Box)`
-  h-[calc(100vh-110px)] 
+  md:h-[calc(100vh-110px)] h-fit
   overflow-y-scroll
 `
 const Content = styled(ContentWrap).attrs({

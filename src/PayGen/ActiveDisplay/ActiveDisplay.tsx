@@ -20,7 +20,7 @@ const ActiveDisplay = ({ data }: CustomerData) => {
 		const result = Object.keys(values).length > 0
 		const options = qe(<ResultCard values={values} />, <PayGenLogo />)
 		return <Display>{options.get(result)}</Display>
-	}, [values])
+	}, [values, data])
 
 	return <Options />
 }
