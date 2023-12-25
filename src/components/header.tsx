@@ -9,7 +9,7 @@ type HeaderProps = {
 
 const Wrap = tw.div`
 	flex items-center justify-between
-  mb-4
+  mb-8
 `
 
 const Title = tw(CardTitle)`

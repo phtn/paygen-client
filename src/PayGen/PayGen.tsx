@@ -1,4 +1,3 @@
-import { useCallback } from 'react'
 import { Home } from '../Tabliture/styled'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -7,9 +6,7 @@ import { checkoutDefaults } from './fields'
 import { useTRPCPayGen } from './hooks'
 import ActiveForm from './ActiveForm'
 import ActiveDisplay from './ActiveDisplay'
-import { CardTitle } from '@components/card'
 import { Container, GridContent } from './styled'
-import { Header } from '@components/header'
 
 const PayGen = () => {
 	const form = useForm<CheckoutSchema>({
@@ -23,17 +20,10 @@ const PayGen = () => {
 		createPaymentLink(values)
 		form.reset(checkoutDefaults)
 	}
-	const Id = useCallback(
-		() => <CardTitle>{payload?.items[0].name}</CardTitle>,
-		[payload]
-	)
 
 	return (
 		<Home>
 			<Container>
-				<Header title='Generate Payment Link'>
-					<Id />
-				</Header>
 				<GridContent>
 					<ActiveForm
 						form={form}

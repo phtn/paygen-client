@@ -8,7 +8,9 @@
 
 		"baseUrl": "./",
 		"paths": {
+			"@context": ["./src/lib/context"],
 			"@components/*": ["./src/components/*"],
+			"@lib/*": ["./src/lib/*"],
 			"@sources/*": ["./src/sources/*"],
 			"@utils/*": ["./src/utils/*"]
 		},

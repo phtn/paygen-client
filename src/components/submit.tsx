@@ -5,10 +5,10 @@ import tw from 'tailwind-styled-components'
 const SubmitButton = tw(Button)`
   w-full mt-[24px]
 `
+
 const Submit = styled(SubmitButton).attrs({
 	size: '4',
 	type: 'submit',
-	value: 'Submit',
 })``
 
 const Label = tw.span`

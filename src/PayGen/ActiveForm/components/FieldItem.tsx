@@ -1,6 +1,6 @@
 import InputField from './InputField'
 import SelectField from './SelectField'
-import { FieldItemProps } from './types'
+import { FieldItemProps } from '../types'
 
 const FieldItem = ({ field, item }: FieldItemProps) => {
 	return item.inputType === 'input' ? (

@@ -8,23 +8,34 @@ import {
 	StatusRight,
 	VersionNumber,
 } from './styled'
-import { useCallback } from 'react'
-import { useAuth } from 'src/User/hooks'
+import { useCallback, useContext, useEffect } from 'react'
+import { AuthContext } from '@context'
+import { useServerStatus } from './hooks'
+import { toast } from 'sonner'
 
 const Statusbar = () => {
-	const { user } = useAuth()
+	const { user } = useContext(AuthContext)
+	const { status } = useServerStatus()
+
+	useEffect(() => {
+		if (status) {
+			toast.success('Server online')
+		} else {
+			toast.error('Disconnected')
+		}
+	}, [status])
 
 	const Status = useCallback(() => {
 		const options = qe(<ActiveStatus />, <InactiveStatus />)
-		return <StatusLeft>{options.get(true)}</StatusLeft>
-	}, [])
+		return <StatusLeft>{options.get(status)}</StatusLeft>
+	}, [status])
 
 	return (
 		<HStack>
 			<Status />
 			<Panel />
 			<StatusRight>
-				<span>{user?.uid}</span>
+				{user ? <code>user: {user.uid}</code> : null}
 				<VersionNumber />
 			</StatusRight>
 		</HStack>

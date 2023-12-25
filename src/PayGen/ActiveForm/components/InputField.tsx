@@ -1,6 +1,6 @@
 import { FormItem, FormLabel, FormControl, FormMessage } from '@components/form'
 import { Input } from '@components/input'
-import { InputFieldProps } from './types'
+import { InputFieldProps } from '../types'
 
 const InputField = (props: InputFieldProps) => {
 	const { label, placeholder, type, field, alt } = props

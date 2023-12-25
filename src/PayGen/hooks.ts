@@ -25,7 +25,7 @@ export const useTRPCPayGen = () => {
 		}
 		startTime = performance.now()
 		setLoading(true)
-		await trpc.create.query(values).then(Ok, Err)
+		await trpc.createLink.query(values).then(Ok, Err)
 	}
 
 	return { createPaymentLink, loading, payload }

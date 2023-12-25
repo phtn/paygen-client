@@ -6,7 +6,7 @@ const Container = tw(Card)`
 `
 
 const GridContent = tw.div`
-	md:grid grid-cols-2
+	md:grid grid-cols-2 gap-x-14
 `
 
 export { Container, GridContent }

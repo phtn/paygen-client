@@ -1,43 +1,37 @@
 import { useCallback } from 'react'
-import {
-	Accordion,
-	AccordionItem,
-	AccordionTrigger,
-	AccordionContent,
-} from '@components/accordion'
 import { CardContent, CardFooter } from '@components/card'
 import { Form, FormField } from '@components/form'
-import { Loading } from '@components/loading'
-import { Submit, Label } from '@components/submit'
+import { Submit } from '@components/submit'
+import { Header } from '@components/header'
 import { qe } from '@utils/helpers'
 import { checkoutInputs } from '../fields'
 import { FieldItemProps, FormProps } from './types'
-import FieldItem from './FieldItem'
+import FieldItem from './components/FieldItem'
+import { ActiveSubmit, InactiveSubmit } from './components/Submit'
+import Advanced from './components/Advanced'
+
+const render = (props: FieldItemProps) => <FieldItem {...props} />
 
 const ActiveForm = ({ form, onSubmit, loading }: FormProps) => {
 	const { formState, handleSubmit, control } = form
 	const { isValid } = formState
 
 	const SubmitOptions = useCallback(() => {
-		const options = qe(<Loading />, <Label>Generate Link</Label>)
+		const options = qe(<InactiveSubmit />, <ActiveSubmit />)
 		return (
 			<Submit disabled={!isValid || loading}>{options.get(loading)}</Submit>
 		)
 	}, [loading, isValid])
 
-	const render = useCallback(
-		(props: FieldItemProps) => <FieldItem {...props} />,
-		[]
-	)
-
-	const primaryInputs = checkoutInputs.slice(0, 8)
-	const secondaryInputs = checkoutInputs.slice(8)
+	const primaryFields = checkoutInputs.slice(0, 8)
+	const secondaryFields = checkoutInputs.slice(8)
 
 	return (
 		<Form {...form}>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<CardContent className='grid grid-cols-2 md:gap-x-4 gap-x-2 gap-y-8'>
-					{primaryInputs.map((item) => (
+				<Header title='Generate Payment Link' />
+				<CardContent className='grid grid-cols-2 md:gap-x-10 gap-x-2 gap-y-8'>
+					{primaryFields.map((item) => (
 						<FormField
 							disabled={loading}
 							key={item.name}
@@ -47,32 +41,11 @@ const ActiveForm = ({ form, onSubmit, loading }: FormProps) => {
 						/>
 					))}
 				</CardContent>
-				<Accordion
-					className='px-6 mb-3'
-					type='single'
-					collapsible>
-					<AccordionItem value='item-1'>
-						<AccordionTrigger className='text-teal-500'>
-							Advanced
-						</AccordionTrigger>
-						<AccordionContent className='bg-teal-50/5 pt-5 rounded'>
-							<CardContent
-								className='grid
-								grid-cols-2
-								gap-4'>
-								{secondaryInputs.map((item) => (
-									<FormField
-										disabled={loading}
-										key={item.name}
-										control={control}
-										name={item.name}
-										render={({ field }) => render({ field, item })}
-									/>
-								))}
-							</CardContent>
-						</AccordionContent>
-					</AccordionItem>
-				</Accordion>
+				<Advanced
+					control={control}
+					fields={secondaryFields}
+					loading={loading}
+				/>
 				<CardFooter>
 					<SubmitOptions />
 				</CardFooter>

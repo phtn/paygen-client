@@ -1,7 +1,10 @@
+import { PaymentResponse } from '@sources/payment'
+import { copyFn } from '@utils/helpers'
 import { ChangeEvent, useState } from 'react'
 
-export const useAttachmentHandler = () => {
+export const useEmailHandler = () => {
 	const [files, setFiles] = useState<FileList | null>(null)
+	const [loading, setLoading] = useState(false)
 
 	const arrayToFileList = (array: File[]) => {
 		const fileList = Object.create(FileList.prototype)
@@ -23,7 +26,6 @@ export const useAttachmentHandler = () => {
 	}
 
 	const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-		console.log('change', files)
 		if (!e.target.files) {
 			return
 		}
@@ -39,8 +41,39 @@ export const useAttachmentHandler = () => {
 	const handleFileRemove = (index: number) => {
 		const updatedFiles = files && [...files].filter((_, i) => index !== i)
 		setFiles(updatedFiles && arrayToFileList(updatedFiles))
-		console.log('remove', files)
 	}
 
-	return { files, handleFileChange, handleFileRemove }
+	const handleSendEmail = () => {
+		setLoading(true)
+		console.log('sending email')
+	}
+
+	return { files, handleFileChange, handleFileRemove, handleSendEmail, loading }
+}
+
+type ControllerParams = {
+	values: PaymentResponse
+}
+
+export const useController = ({ values }: ControllerParams) => {
+	const { external_id, invoice_url, amount, expiry_date } = values
+
+	const copyInvNum = () => {
+		copyFn({ name: 'Invoice Number', text: external_id })
+	}
+	const copyInvUrl = () => {
+		copyFn({ name: 'Payment Link', text: invoice_url })
+	}
+
+	const copyAmount = () => {
+		copyFn({ name: 'Total Amount', text: amount.toString() })
+	}
+	const copyExpiry = () => {
+		copyFn({ name: 'Expiry Date', text: expiry_date })
+	}
+
+	const topProps = { external_id, invoice_url, copyInvNum, copyInvUrl }
+	const midProps = { amount, expiry_date, copyAmount, copyExpiry }
+
+	return { midProps, topProps }
 }

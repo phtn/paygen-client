@@ -1,65 +1,38 @@
-import { useCopy } from '@utils/hooks'
 import { ResultProps } from './types'
-import { EmailContent, Footer, Top, Result, Mid, FileItem } from './styled'
-import { useAttachmentHandler } from './hooks'
+import { useEmailHandler, useController } from './hooks'
+import { Header } from '@components/header'
+import { Result } from './styled'
+import TopItem from './components/TopItem'
+import MidItem from './components/MidItem'
+import EmailContent from './components/EmailContent'
+import Actions from './components/Actions'
 
 const ResultCard = ({ values }: ResultProps) => {
-	const { amount, expiry_date, external_id, invoice_url } = values
-	const [_, copy] = useCopy()
-	const { files, handleFileChange, handleFileRemove } = useAttachmentHandler()
+	const {
+		files,
+		handleFileChange,
+		handleFileRemove,
+		handleSendEmail,
+		loading,
+	} = useEmailHandler()
 
-	const handleCopyInvUrl = () => {
-		copy({ name: 'Payment Link', text: invoice_url as string })
-	}
-	const handleCopyInvNum = () => {
-		copy({ name: 'Invoice Number', text: external_id as string })
-	}
-
-	const handleCopyAmount = () => {
-		copy({ name: 'Total Amount', text: invoice_url as string })
-	}
-	const handleCopyExpiryDate = () => {
-		copy({ name: 'Expiry Date', text: external_id as string })
-	}
-
-	const handleSendEmail = () => {
-		return null
-	}
+	const { midProps, topProps } = useController({ values })
 
 	return (
 		<Result>
-			<Top
-				inv_num={external_id}
-				inv_url={invoice_url}
-				copyInvoiceNum={handleCopyInvNum}
-				copyInvoiceUrl={handleCopyInvUrl}
-			/>
-
-			<Mid
-				amount={amount}
-				expiry_date={expiry_date}
-				copyAmount={handleCopyAmount}
-				copyExpiryDate={handleCopyExpiryDate}
-			/>
+			<Header title={values.items[0].name || ''} />
+			<TopItem {...topProps} />
+			<MidItem {...midProps} />
 
 			<EmailContent
-				attachments={
-					files
-						? [...files].map((file, index) => (
-								<FileItem
-									index={index}
-									file={file}
-									key={file.name}
-									onRemove={handleFileRemove}
-								/>
-						  ))
-						: null
-				}
+				data={files && [...files]}
+				onPress={handleFileRemove}
 			/>
 
-			<Footer
-				sendEmail={handleSendEmail}
+			<Actions
 				fileChange={handleFileChange}
+				sendEmail={handleSendEmail}
+				loading={loading}
 			/>
 		</Result>
 	)

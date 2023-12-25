@@ -33,7 +33,7 @@ type IconPrefixType = {
 	name: IconName
 	icon: React.ReactElement
 }
-const iconClassname = 'h-[16px] w-[16px] text-teal-500 dark:text-orange-300'
+const iconClassname = 'h-[16px] w-[16px] text-teal-500 dark:text-slate-500'
 const IconPrefix: IconPrefixType[] = [
 	{ name: 'user', icon: <PersonIcon className={iconClassname} /> },
 	{ name: 'name', icon: <IdCardIcon className={iconClassname} /> },
@@ -52,7 +52,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 		return (
 			<div
 				className={cn(
-					'flex h-10 items-center rounded-md border-[0.33px[] dark:bg-gray-500/30 bg-transparent  pl-3 text-sm ring-offset-teal-500 focus-within:ring-1 focus-within:ring-ring focus-within:ring-offset-1 placeholder:text-muted',
+					'flex h-10 items-center rounded-md border-[0.33px[] bg-gray-500/20  pl-3 text-sm ring-offset-teal-500 focus-within:ring-1 focus-within:ring-ring focus-within:ring-offset-1 placeholder:text-muted',
 					className
 				)}>
 				{

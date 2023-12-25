@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
+import { toast } from 'sonner'
 
 export const qe = (...args: any[]) => {
 	const pair = new Map([
@@ -44,4 +45,26 @@ export const transformDate = (dateString: string): string => {
 		timeZone: 'UTC',
 	}
 	return date.toLocaleString('en-US', options)
+}
+
+type CopyFnParams = {
+	name: string
+	text: string
+}
+type CopyFn = (params: CopyFnParams) => Promise<boolean> // Return success
+
+export const copyFn: CopyFn = async ({ name, text }) => {
+	if (!navigator?.clipboard) {
+		toast('Clipboard not supported')
+		return false
+	}
+
+	try {
+		await navigator.clipboard.writeText(text)
+		toast.success(`${name ? 'Copied: ' + name : 'Copied.'}`)
+		return true
+	} catch (error) {
+		toast.error('Copy failed.')
+		return false
+	}
 }
