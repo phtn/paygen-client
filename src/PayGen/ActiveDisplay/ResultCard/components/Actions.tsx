@@ -1,9 +1,7 @@
-import { Loading } from '@components/loading'
-import { PaperPlaneIcon } from '@radix-ui/react-icons'
-import { qe } from '@utils/helpers'
 import { ChangeEvent } from 'react'
-import { ActionsWrap, SendButton } from '../styled'
+import { ActionsWrap } from '../styled'
 import { Input } from '@components/input'
+import { SubmitAction } from '@components/submit'
 
 type ActionProps = {
 	fileChange: (e: ChangeEvent<HTMLInputElement>) => void
@@ -11,31 +9,7 @@ type ActionProps = {
 	loading: boolean
 }
 
-const ActiveSend = () => (
-	<>
-		<span>Send Email</span>
-		<PaperPlaneIcon />
-	</>
-)
-
-const InactiveSend = () => (
-	<>
-		<span className='text-teal-500'>Sending</span>
-		<Loading />
-	</>
-)
-
 const Actions = ({ fileChange, loading, sendEmail }: ActionProps) => {
-	const SendAction = () => {
-		const options = qe(<InactiveSend />, <ActiveSend />)
-		return (
-			<SendButton
-				disabled={loading}
-				onClick={sendEmail}>
-				{options.get(loading)}
-			</SendButton>
-		)
-	}
 	return (
 		<ActionsWrap>
 			<Input
@@ -47,7 +21,14 @@ const Actions = ({ fileChange, loading, sendEmail }: ActionProps) => {
 				multiple
 				className='max-w-[220px] text-[12px]'
 			/>
-			<SendAction />
+			<SubmitAction
+				activeLabel='Send Email'
+				inactiveLabel='Sending'
+				isValid={true}
+				loading={loading}
+				onClick={sendEmail}
+				width={150}
+			/>
 		</ActionsWrap>
 	)
 }

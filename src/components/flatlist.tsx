@@ -1,7 +1,8 @@
+import {ReactElement} from 'react'
 import { Box, Flex } from '@radix-ui/themes'
 import { qe } from '@utils/helpers'
 
-type RenderItemFunction<T> = (item: T, index?: number) => JSX.Element
+type RenderItemFunction<T> = (item: T, index?: number) => ReactElement
 type KeyExtractorFunction<T> = (item: T, index: number) => string
 
 interface FlatListProps<T> {

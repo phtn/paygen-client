@@ -1,6 +1,6 @@
 import { CardContent, CardFooter, Card as Display } from '@components/card'
 import { CopyIcon } from '@radix-ui/react-icons'
-import { Button, Flex, TextArea } from '@radix-ui/themes'
+import { Flex, TextArea } from '@radix-ui/themes'
 import styled from 'styled-components'
 import tw from 'tailwind-styled-components'
 
@@ -13,10 +13,10 @@ const Label = tw.span`
   text-teal-500 font-bold tracking-tight flex items-center whitespace-nowrap
 `
 const Content = tw(Flex)`
-  text-orange-200 text-[12px] items-center whitespace-nowrap grow-0 overflow-x-auto text-ellipsis 
+  text-slate-500 text-[12px] items-center whitespace-nowrap grow-0 overflow-x-auto text-ellipsis
 `
 const Copy = tw(CopyIcon)`
-	mx-3 text-orange-300
+	mx-3 text-orange-400
 `
 
 const EmailWrap = tw(CardContent)`
@@ -28,11 +28,11 @@ const TextMessage = tw(TextArea)`
   col-span-2 rounded
 `
 const Uploads = tw.div`
-  border-[0.24px] border-slate-700 rounded 
+  border-0 border-slate-700 rounded
   overflow-y-scroll
 `
 const FileNameWrap = tw.div`
-  text-teal-500 text-[14px] font-bold 
+  text-teal-500 text-[14px] font-bold
   tracking-tight flex items-center justify-between 
   whitespace-nowrap max-w-[200px] overflow-x-scroll
 `
@@ -42,19 +42,8 @@ const FileName = tw.div`
 const FileType = tw.div`
   uppercase text-slate-500 ml-3
 `
-
 const ActionsWrap = tw(CardFooter)`
   flex justify-between items-center mt-4 w-full
-`
-const Action = tw(Button)`
-  flex items-center
-`
-const SendButton = styled(Action).attrs({
-	size: '2',
-	variant: 'solid',
-})`
-	width: 140px;
-	height: 36px;
 `
 
 export {
@@ -67,7 +56,6 @@ export {
 	FileType,
 	Label,
 	Result,
-	SendButton,
 	TextMessage,
 	Uploads,
 }

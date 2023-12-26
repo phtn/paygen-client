@@ -1,5 +1,5 @@
 import { ResultProps } from './types'
-import { useEmailHandler, useController } from './hooks'
+import { useEmailHandler, useActiveControls } from './hooks'
 import { Header } from '@components/header'
 import { Result } from './styled'
 import TopItem from './components/TopItem'
@@ -16,7 +16,7 @@ const ResultCard = ({ values }: ResultProps) => {
 		loading,
 	} = useEmailHandler()
 
-	const { midProps, topProps } = useController({ values })
+	const { midProps, topProps } = useActiveControls({ values })
 
 	return (
 		<Result>

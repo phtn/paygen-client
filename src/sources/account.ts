@@ -21,12 +21,12 @@ export interface AccountResponseResource {
 	description: string
 	hashed_phone_number: string
 	domicile_of_registration: string
-	kyc_documents: any[]
+	kyc_documents: unknown[]
 	id: string
 	reference_id: string
-	metadata: Record<string, any>
+	metadata: Record<string, unknown>
 	individual_detail: IndividualDetail
-	business_detail: any
-	addresses: any[]
-	identity_accounts: any[]
+	business_detail: unknown
+	addresses: unknown[]
+	identity_accounts: unknown[]
 }

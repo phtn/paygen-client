@@ -3,6 +3,7 @@ import { toast } from 'sonner'
 import { useState } from 'react'
 import { PaymentResponse } from '@sources/payment'
 import { trpc } from '@utils/trpc'
+import { onError } from '@utils/toast'
 
 export const useTRPCPayGen = () => {
 	const [loading, setLoading] = useState(false)
@@ -13,10 +14,9 @@ export const useTRPCPayGen = () => {
 	const createPaymentLink = async (values: CheckoutSchema) => {
 		const Err = (err: Error) => {
 			setLoading(false)
-			toast.error(err.message)
-			throw new Error(err.message)
+			onError(err.message)
 		}
-		const Ok = async (response: any) => {
+		const Ok = async (response: PaymentResponse) => {
 			setLoading(false)
 			setPayload(response)
 			const endTime = performance.now()

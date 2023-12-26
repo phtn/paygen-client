@@ -11,12 +11,10 @@ import {
 	LoginFormProps,
 	LoginSchema,
 	loginFields,
-} from './schema'
+} from '../schema'
 import { Input } from '@components/input'
 import { useCallback } from 'react'
-import { qe } from '@utils/helpers'
-import { Loading } from '@components/loading'
-import { Submit, Label } from '@components/submit'
+import { SubmitAction } from '@components/submit'
 
 const LoginForm = (props: LoginFormProps) => {
 	const { form, onSubmit, loading } = props
@@ -46,12 +44,16 @@ const ActiveForm = ({
 	onSubmit,
 }: ActiveFormProps) => {
 	const { handleSubmit, control, formState } = form
-	const SubmitOptions = useCallback(() => {
-		const options = qe(<Loading />, <Label>Sign in</Label>)
+	const { isValid } = formState
+
+	const Submit = useCallback(() => {
 		return (
-			<Submit disabled={!formState.isValid || loading}>
-				{options.get(loading)}
-			</Submit>
+			<SubmitAction
+				activeLabel='Sign in'
+				inactiveLabel='Signing in'
+				isValid={isValid}
+				loading={loading}
+			/>
 		)
 	}, [loading, formState.isValid])
 	return (
@@ -77,7 +79,7 @@ const ActiveForm = ({
 					)}
 				/>
 			))}
-			<SubmitOptions />
+			<Submit />
 		</form>
 	)
 }

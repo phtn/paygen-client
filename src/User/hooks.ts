@@ -3,7 +3,7 @@ import { User, UserCredential } from 'firebase/auth'
 import { FirebaseError } from 'firebase/app'
 import { trpc } from '@utils/trpc'
 import { LoginSchema } from './schema'
-import { toast } from 'sonner'
+import { onError, onSuccess } from '@utils/toast'
 
 export const useAuth = () => {
 	const [user, setUser] = useState<User | null>(null)
@@ -17,19 +17,19 @@ export const useAuth = () => {
 	}
 
 	const signOut = async () => {
-		const response = await trpc.signOut.query()
-		console.log(response)
+		await trpc.signOut.query()
+		setUser(null)
 	}
 
 	const signInWithEmailAndPassword = async (params: LoginSchema) => {
 		const Ok = (values: UserCredential) => {
 			setUser(values.user)
 			setLoading(false)
-			toast.success('Login successful')
+			onSuccess('Login successful')
 		}
 		const Err = (err: FirebaseError) => {
 			setLoading(false)
-			toast.error(err.message)
+			onError(err.message)
 		}
 		setLoading(true)
 		await trpc.signInWithEmailAndPassword

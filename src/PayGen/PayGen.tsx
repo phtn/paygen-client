@@ -16,8 +16,8 @@ const PayGen = () => {
 
 	const { createPaymentLink, loading, payload } = useTRPCPayGen()
 
-	const onSubmit = (values: CheckoutSchema) => {
-		createPaymentLink(values)
+	const onSubmit = async (values: CheckoutSchema) => {
+		await createPaymentLink(values)
 		form.reset(checkoutDefaults)
 	}
 

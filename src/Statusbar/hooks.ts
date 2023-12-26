@@ -15,13 +15,13 @@ export const useServerStatus = () => {
 	}
 
 	useEffect(() => {
-		checkStatus()
+		checkStatus().then(res => res)
 	}, [])
 
 	useEffect(() => {
 		const interval = setInterval(() => {
 			if (!status) {
-				checkStatus()
+				checkStatus().then(res => res)
 			}
 		}, 10000)
 		return () => clearInterval(interval)

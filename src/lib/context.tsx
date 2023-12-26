@@ -1,3 +1,4 @@
+import {ReactNode} from 'react'
 import { User } from 'firebase/auth'
 import { createContext } from 'react'
 import { useAuth } from 'src/User/hooks'
@@ -17,7 +18,7 @@ export const AuthContext = createContext<UserContext>({
 	signOut: () => {},
 })
 
-export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
 	const { user, loading, signInWithEmailAndPassword, signOut } = useAuth()
 
 	return (

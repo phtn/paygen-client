@@ -1,13 +1,11 @@
 import { useCallback } from 'react'
 import { CardContent, CardFooter } from '@components/card'
 import { Form, FormField } from '@components/form'
-import { Submit } from '@components/submit'
+import { SubmitAction } from '@components/submit'
 import { Header } from '@components/header'
-import { qe } from '@utils/helpers'
 import { checkoutInputs } from '../fields'
 import { FieldItemProps, FormProps } from './types'
 import FieldItem from './components/FieldItem'
-import { ActiveSubmit, InactiveSubmit } from './components/Submit'
 import Advanced from './components/Advanced'
 
 const render = (props: FieldItemProps) => <FieldItem {...props} />
@@ -16,10 +14,14 @@ const ActiveForm = ({ form, onSubmit, loading }: FormProps) => {
 	const { formState, handleSubmit, control } = form
 	const { isValid } = formState
 
-	const SubmitOptions = useCallback(() => {
-		const options = qe(<InactiveSubmit />, <ActiveSubmit />)
+	const Submit = useCallback(() => {
 		return (
-			<Submit disabled={!isValid || loading}>{options.get(loading)}</Submit>
+			<SubmitAction
+				activeLabel='Generate Payment Link'
+				inactiveLabel='Generating'
+				isValid={isValid}
+				loading={loading}
+			/>
 		)
 	}, [loading, isValid])
 
@@ -47,7 +49,7 @@ const ActiveForm = ({ form, onSubmit, loading }: FormProps) => {
 					loading={loading}
 				/>
 				<CardFooter>
-					<SubmitOptions />
+					<Submit />
 				</CardFooter>
 			</form>
 		</Form>

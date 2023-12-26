@@ -1,6 +1,6 @@
 import { PaymentResponse } from '@sources/payment'
 import { copyFn } from '@utils/helpers'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useCallback, useState } from 'react'
 
 export const useEmailHandler = () => {
 	const [files, setFiles] = useState<FileList | null>(null)
@@ -25,18 +25,21 @@ export const useEmailHandler = () => {
 		return fileList
 	}
 
-	const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-		if (!e.target.files) {
-			return
-		}
-		if (!files) {
-			setFiles(e.target.files)
-		}
-		if (files) {
-			const fileArray = [...files, ...e.target.files]
-			setFiles(fileArray && arrayToFileList(fileArray as File[]))
-		}
-	}
+	const handleFileChange = useCallback(
+		(e: ChangeEvent<HTMLInputElement>) => {
+			if (!e.target.files) {
+				return
+			}
+			if (!files) {
+				setFiles(e.target.files)
+			}
+			if (files) {
+				const fileArray = [...files, ...e.target.files]
+				setFiles(fileArray && arrayToFileList(fileArray as File[]))
+			}
+		},
+		[files]
+	)
 
 	const handleFileRemove = (index: number) => {
 		const updatedFiles = files && [...files].filter((_, i) => index !== i)
@@ -55,21 +58,21 @@ type ControllerParams = {
 	values: PaymentResponse
 }
 
-export const useController = ({ values }: ControllerParams) => {
+export const useActiveControls = ({ values }: ControllerParams) => {
 	const { external_id, invoice_url, amount, expiry_date } = values
 
-	const copyInvNum = () => {
-		copyFn({ name: 'Invoice Number', text: external_id })
+	const copyInvNum = async() => {
+		await copyFn({ name: 'Invoice Number', text: external_id })
 	}
-	const copyInvUrl = () => {
-		copyFn({ name: 'Payment Link', text: invoice_url })
+	const copyInvUrl = async () => {
+		await copyFn({ name: 'Payment Link', text: invoice_url })
 	}
 
-	const copyAmount = () => {
-		copyFn({ name: 'Total Amount', text: amount.toString() })
+	const copyAmount = async () => {
+		await copyFn({ name: 'Total Amount', text: amount.toString() })
 	}
-	const copyExpiry = () => {
-		copyFn({ name: 'Expiry Date', text: expiry_date })
+	const copyExpiry = async () => {
+		await copyFn({ name: 'Expiry Date', text: expiry_date })
 	}
 
 	const topProps = { external_id, invoice_url, copyInvNum, copyInvUrl }

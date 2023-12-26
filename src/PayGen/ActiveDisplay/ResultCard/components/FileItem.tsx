@@ -12,16 +12,16 @@ type FileItemProps = {
 }
 const FileItem = ({ index, name, size, type, onPress }: FileItemProps) => (
 	<Card
-		className='flex'
+		className='flex mb-[4px]'
 		variant='classic'>
 		<Box>
 			<FileNameWrap>
 				<FileName>{name}</FileName>
 				<IconButton
-					variant='outline'
+					variant='ghost'
 					size={'1'}
 					onClick={() => onPress(index)}>
-					<Cross2Icon className='text-orange-300' />
+					<Cross2Icon className='text-orange-400 mr-[3px]' />
 				</IconButton>
 			</FileNameWrap>
 			<Content>

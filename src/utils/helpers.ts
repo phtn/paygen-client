@@ -1,18 +1,12 @@
-import { Dispatch, SetStateAction } from 'react'
+import {ReactElement} from 'react'
 import { toast } from 'sonner'
+import { onSuccess } from './toast'
 
-export const qe = (...args: any[]) => {
-	const pair = new Map([
+export const qe = (...args: ReactElement[]) => {
+	return new Map([
 		[true, args[0]],
 		[false, args[1]],
 	])
-	return pair
-}
-
-export const toggleState = (
-	setState: Dispatch<SetStateAction<boolean>>
-): void => {
-	setState((prevState) => !prevState)
 }
 
 export const decimal = (
@@ -21,11 +15,10 @@ export const decimal = (
 ): string => {
 	if (num === undefined) return '0.00'
 	const parsedNumber = typeof num === 'string' ? parseFloat(num) : num
-	const formattedNumber = parsedNumber.toLocaleString('en-US', {
+	return parsedNumber.toLocaleString('en-US', {
 		minimumFractionDigits: digits,
 		maximumFractionDigits: digits,
 	})
-	return formattedNumber
 }
 
 export const extractFileType = (input: string): string | null => {
@@ -61,10 +54,21 @@ export const copyFn: CopyFn = async ({ name, text }) => {
 
 	try {
 		await navigator.clipboard.writeText(text)
-		toast.success(`${name ? 'Copied: ' + name : 'Copied.'}`)
+		onSuccess(`${name ? 'Copied: ' + name : 'Copied.'}`, limitText(text))
 		return true
 	} catch (error) {
 		toast.error('Copy failed.')
 		return false
 	}
+}
+
+export const limitText = (text: string | number) => {
+	if (typeof text === 'number') {
+		const str = text.toString()
+		return str.substring(0, 30)
+	}
+	if (text.length > 45) {
+		return `${text.substring(0, 40)} ...`
+	}
+	return text.substring(0, 45)
 }

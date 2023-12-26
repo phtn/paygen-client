@@ -6,12 +6,11 @@ import { Container, SignInContent } from './styled'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { LoginSchema, loginDefaults, loginSchema } from './schema'
-import LoginForm from './LoginForm'
+import LoginForm from './components/LoginForm'
 import { AuthContext } from 'src/lib/context'
 import { qe } from '@utils/helpers'
-import { Submit, Label } from '@components/submit'
-import { Loading } from '@components/loading'
 import { User } from 'firebase/auth'
+import { SubmitAction } from '@components/submit'
 
 type LogoutProps = {
 	onSubmit: () => void
@@ -21,9 +20,15 @@ type LogoutProps = {
 
 const LogoutForm = ({ onSubmit, loading, user }: LogoutProps) => {
 	const LogoutOptions = useCallback(() => {
-		const options = qe(<Loading />, <Label>Logout</Label>)
-		return <Submit onClick={onSubmit}>{options.get(loading)}</Submit>
-	}, [onSubmit, loading])
+		return (
+			<SubmitAction
+				activeLabel='Logout'
+				inactiveLabel='Logging out'
+				loading={loading}
+				onClick={onSubmit}
+			/>
+		)
+	}, [loading, onSubmit])
 	return (
 		<div>
 			<span>{user?.uid}</span>
@@ -41,14 +46,15 @@ const Profile = () => {
 		defaultValues: loginDefaults,
 	})
 
-	const signIn = (values: LoginSchema) => {
+
+
+	const UserOptions = useCallback(() => {
+const signIn = (values: LoginSchema) => {
 		signInWithEmailAndPassword(values)
 	}
 	const logout = () => {
 		signOut()
 	}
-
-	const UserOptions = useCallback(() => {
 		const isAuthed = Object.keys(user || {}).length > 0
 		const options = qe(
 			<LogoutForm
@@ -63,7 +69,7 @@ const Profile = () => {
 			/>
 		)
 		return <SignInContent value='signin'>{options.get(isAuthed)}</SignInContent>
-	}, [user])
+	}, [form, loading, user, signInWithEmailAndPassword, signOut ])
 
 	return (
 		<Login>

@@ -17,7 +17,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 				radius='small'
 				scaling='90%'>
 				<App />
-				<Toaster />
+				<Toaster
+					expand={true}
+					richColors
+				/>
 			</Theme>
 		</ThemeProvider>
 	</React.StrictMode>
