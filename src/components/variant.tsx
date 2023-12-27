@@ -5,16 +5,16 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@utils/cn'
 
 const buttonVariants = cva(
-	'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+	'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none',
 	{
 		variants: {
 			variant: {
 				default:
-					'bg-gradient-to-tr from-indigo-600 from-30% via-indigo-500 via-60% to-indigo-200 hover:via-100% hover:to-indigo-100 transition-all duration-500 hover:text-orange-100 text-indigo-50',
+					'bg-gradient-to-tr from-indigo-600 from-30% via-indigo-500 via-60% to-indigo-200 disabled:from-indigo-600/50 disabled:to-indigo-200/50 hover:via-100% hover:to-indigo-100 transition-all duration-500 hover:text-orange-100 text-indigo-50',
 				destructive:
 					'bg-destructive text-orange-400/80 hover:bg-destructive/90',
 				outline:
-					'border border-indigo-400 text-indigo-400 hover:bg-indigo-500/30 hover:text-orange-100 transition-all duration-500',
+					'border border-indigo-400 text-indigo-200 hover:bg-indigo-500/30 hover:text-orange-100 transition-all duration-500',
 				secondary:
 					'bg-secondary text-secondary-foreground hover:bg-secondary/80',
 				ghost: 'hover:bg-accent hover:text-orange-100 text-slate-400',

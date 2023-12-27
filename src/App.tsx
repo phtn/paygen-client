@@ -1,11 +1,11 @@
 import Statusbar from './main/Statusbar'
 import Tabliture from './main/Tabliture'
 import { VStack } from './styled'
-import './App.css'
 import { AuthContext } from './lib/context'
 import { useCallback, useContext } from 'react'
 import { qe } from '@utils/helpers'
-import { Landing } from './main/Landing/Landing'
+import { Landing } from './main/Landing'
+import './App.css'
 
 const AuthedPage = () => (
 	<VStack>

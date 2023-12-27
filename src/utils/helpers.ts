@@ -1,4 +1,4 @@
-import {ReactElement} from 'react'
+import { Dispatch, ReactElement, SetStateAction } from 'react'
 import { toast } from 'sonner'
 import { onSuccess } from './toast'
 
@@ -71,4 +71,14 @@ export const limitText = (text: string | number) => {
 		return `${text.substring(0, 40)} ...`
 	}
 	return text.substring(0, 45)
+}
+
+export const getNextElement = <T>(
+	array: T[],
+	currentIndex: number,
+	setState: Dispatch<SetStateAction<number>>
+) => {
+	const nextIndex = (currentIndex + 1) % array.length // Calculate the next index with wrap-around
+	setState(nextIndex)
+	return nextIndex
 }

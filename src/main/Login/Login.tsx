@@ -37,7 +37,7 @@ const LogoutForm = ({ onSubmit, loading, user }: LogoutProps) => {
 	)
 }
 
-const Profile = () => {
+const Login = () => {
 	const { signInWithEmailAndPassword, signOut, loading, user } =
 		useContext(AuthContext)
 
@@ -62,7 +62,7 @@ const Profile = () => {
 			/>,
 			<LoginForm
 				form={form}
-				loading={loading}
+				loading={true}
 				onSubmit={signIn}
 			/>
 		)
@@ -94,4 +94,4 @@ const Profile = () => {
 	)
 }
 
-export default Profile
+export default Login
