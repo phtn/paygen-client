@@ -1,8 +1,8 @@
-import {ReactNode} from 'react'
+import { ReactNode } from 'react'
 import { User } from 'firebase/auth'
 import { createContext } from 'react'
-import { useAuth } from 'src/User/hooks'
-import { LoginSchema } from 'src/User/schema'
+import { useAuth } from 'src/main/User/hooks'
+import { LoginSchema } from 'src/main/User/schema'
 
 type UserContext = {
 	user: User | null

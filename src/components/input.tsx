@@ -33,7 +33,7 @@ type IconPrefixType = {
 	name: IconName
 	icon: React.ReactElement
 }
-const iconClassname = 'h-[16px] w-[16px] text-teal-500 dark:text-slate-500'
+const iconClassname = 'h-[16px] w-[16px] dark:text-orange-200/80 text-slate-600'
 const IconPrefix: IconPrefixType[] = [
 	{ name: 'user', icon: <PersonIcon className={iconClassname} /> },
 	{ name: 'name', icon: <IdCardIcon className={iconClassname} /> },
@@ -63,7 +63,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 					{...props}
 					type={type}
 					ref={ref}
-					className='w-full p-2 placeholder:text-muted-foreground bg-transparent focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50'
+					className='w-full p-2 ml-[11px] placeholder:text-muted-foreground bg-transparent focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50'
 				/>
 			</div>
 		)

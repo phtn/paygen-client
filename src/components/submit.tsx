@@ -1,16 +1,16 @@
-import { Button } from '@radix-ui/themes'
 import { qe } from '@utils/helpers'
 import styled from 'styled-components'
 import tw from 'tailwind-styled-components'
 import { Loading } from './loading'
+import { Variant } from './variant'
 
-const SubmitButton = tw(Button)`
+const SubmitButton = tw(Variant)`
   w-full mt-[24px]
 `
 
 const Submit = styled(SubmitButton).attrs<{ width?: number }>({
-	size: '4',
 	type: 'submit',
+	size: 'lg',
 })`
 	width: ${({ width }) => width}px;
 `
@@ -59,7 +59,7 @@ const SubmitAction = ({
 	return (
 		<Submit
 			width={width}
-			disabled={loading || !isValid}
+			disabled={loading || isValid === false}
 			onClick={onClick}>
 			{options.get(loading)}
 		</Submit>

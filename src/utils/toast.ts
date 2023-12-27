@@ -13,13 +13,13 @@ export const onError = (...args: string[]) => {
 }
 
 export const onInfo = (...args: string[]) => {
-	toast.error(args[0], {
+	toast.info(args[0], {
 		description: args[1],
 	})
 }
 
 export const onWarn = (...args: string[]) => {
-	toast.error(args[0], {
+	toast.warning(args[0], {
 		description: args[1],
 	})
 }
