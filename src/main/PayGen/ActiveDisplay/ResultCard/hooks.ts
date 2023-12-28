@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useState } from 'react'
+import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 import { type PaymentResponse } from '@sources/payment'
 import { copyFn } from '@utils/helpers'
 import { onError, onSuccess } from '@utils/toast'
@@ -93,8 +93,27 @@ type ControllerParams = {
 	values: PaymentResponse
 }
 
+export type TitleItem = {
+	label: string
+	value: string
+}
+
 export const useActiveControls = ({ values }: ControllerParams) => {
-	const { external_id, invoice_url, amount, expiry_date } = values
+	const { amount, external_id, expiry_date, invoice_url, items } = values
+
+	const itemLabels = ['ISO Number', 'Policy Number', 'Assured Name']
+	const [titleProps, setTitleProps] = useState<TitleItem[] | null>()
+
+	useEffect(() => {
+		if (items) {
+			const itemValues = items[0].name?.split(' · ')
+			const itemPairs = itemValues?.map((value, index) => ({
+				value,
+				label: itemLabels[index],
+			}))
+			setTitleProps(itemPairs)
+		}
+	}, [items])
 
 	const copyInvNum = async () => {
 		await copyFn({ name: 'Invoice Number', text: external_id })
@@ -110,8 +129,15 @@ export const useActiveControls = ({ values }: ControllerParams) => {
 		await copyFn({ name: 'Expiry Date', text: expiry_date })
 	}
 
-	const topProps = { external_id, invoice_url, copyInvNum, copyInvUrl }
-	const midProps = { amount, expiry_date, copyAmount, copyExpiry }
+	const topProps = {
+		external_id,
+		amount,
+		expiry_date,
+		copyInvNum,
+		copyAmount,
+		copyExpiry,
+	}
+	const midProps = { invoice_url, copyInvUrl }
 
-	return { midProps, topProps }
+	return { midProps, topProps, titleProps }
 }

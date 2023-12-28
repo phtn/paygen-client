@@ -27,19 +27,19 @@ export const Jumbotron = () => {
 	)
 
 	return (
-		<div className='md:w-[calc(100vw/2)] flex items-center justify-start px-6 z-20'>
+		<div className='md:w-[calc(100vw/2)] flex items-center justify-start px-3 md:px-12 z-20'>
 			<div className='flex flex-col'>
-				<h1 className='text-transparent bg-clip-text bg-gradient-to-tr from-indigo-400 from-30% via-orange-100 via-70% to-orange-50 to-100% md:text-[3rem] text-[2.5rem] leading-[3.25rem] font-extrabold'>
+				<h1 className='text-transparent bg-clip-text bg-gradient-to-tr dark:from-indigo-400 from-indigo-600 from-30% via-orange-100 via-70% to-orange-50 to-100% md:text-[3rem] text-[2.5rem] leading-[3.25rem] font-extrabold'>
 					PayGen
 				</h1>
-				<h2 className='text-[1.75rem] tracking-wider mx-[1px] font-thin dark:text-orange-100 text-indigo-300'>
+				<h2 className='text-[1.75rem] tracking-wider mx-[1px] font-thin dark:text-orange-100 text-indigo-500'>
 					<Writer />
 				</h2>
-				<div className='h-[125px] lg:w-[300px] flex items-center text-indigo-300/70 font-medium'>
+				<div className='h-[90px] lg:w-[350px] text-justify flex items-center dark:text-indigo-300/70 text-indigo-700 font-medium'>
 					The Arrival of Advanced Payment Integration suited for complex
 					business applications.
 				</div>
-				<div className='h-[75px] lg:w-[340px] flex items-end md:justify-between justify-around'>
+				<div className='h-[70px] lg:w-[340px] flex items-end md:justify-between justify-around'>
 					<Variant variant='default'>Get Started</Variant>
 					<Variant variant='outline'>Request Demo</Variant>
 				</div>

@@ -150,7 +150,7 @@ export const checkoutInputs: CheckoutInput[] = [
 ]
 
 export const checkoutDefaults: CheckoutSchema = {
-	iso_number: '01234567',
+	iso_number: '012',
 	policy_number: 'GC-PCV-100930489',
 	given_names: 'Olivia',
 	surname: 'Ponton',

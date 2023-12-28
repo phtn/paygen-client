@@ -18,9 +18,6 @@ const App = () => {
 	const { user } = useContext(AuthContext)
 
 	const PageOptions = useCallback(() => {
-		if (user) {
-			console.log(user)
-		}
 		const isAuthed = Object.keys(user || {}).length > 0
 		const options = qe(<AuthedPage />, <Landing />)
 		return <>{options.get(isAuthed)}</>

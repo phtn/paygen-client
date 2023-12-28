@@ -29,7 +29,7 @@ export const Sidebar = () => {
 					className='font-medium w-full'
 					key={item.href}
 					onClick={handleOnSelect(item.href)}
-					variant={active === item.href ? 'default' : 'ghost'}>
+					variant={active === item.href ? 'secondary' : 'ghost'}>
 					{item.title}
 				</Variant>
 			))}

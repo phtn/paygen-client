@@ -1,5 +1,5 @@
 import { useCallback, useContext } from 'react'
-import { Card, Flex, Tabs } from '@radix-ui/themes'
+import { Flex, Tabs } from '@radix-ui/themes'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AuthContext } from '@lib/context'
@@ -11,6 +11,7 @@ import { Header } from '@components/header'
 import { SubmitAction } from '@components/submit'
 import { qe } from '@utils/helpers'
 import { AvatarIcon } from '@radix-ui/react-icons'
+import { Card } from '@components/card'
 
 type LogoutProps = {
 	onSubmit: () => void
@@ -62,7 +63,7 @@ const Login = () => {
 			/>,
 			<LoginForm
 				form={form}
-				loading={true}
+				loading={loading}
 				onSubmit={signIn}
 			/>
 		)
@@ -75,10 +76,12 @@ const Login = () => {
 				<AvatarIcon className=' mb-7 h-[24px] w-[24px] mr-2 text-indigo-400' />
 				<Header title='Login to your account' />
 			</Flex>
-			<Card className='md:w-[350px] w-full h-fit'>
+			<Card className='md:w-[350px] border-0 w-full h-fit'>
 				<Tabs.Root defaultValue='signin'>
-					<Tabs.List>
-						<Tabs.Trigger value='signin'>
+					<Tabs.List className='text-indigo-200'>
+						<Tabs.Trigger
+							value='signin'
+							className='text-indigo-200'>
 							{user?.uid ? user.uid : 'Sign In'}
 						</Tabs.Trigger>
 						<Tabs.Trigger value='register'>Register</Tabs.Trigger>

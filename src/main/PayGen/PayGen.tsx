@@ -19,7 +19,6 @@ const PayGen = () => {
 
 	const onSubmit = async (values: CheckoutSchema) => {
 		await createPaymentLink(values)
-		form.reset(checkoutDefaults)
 	}
 
 	return (

@@ -26,7 +26,7 @@ export const Landing = () => {
 			<Aliens />
 			<Arrival />
 
-			<div className='md:grid md:grid-cols-2'>
+			<div className='md:grid md:grid-cols-2 items-center'>
 				<Jumbotron />
 				<ViewOptions />
 			</div>

@@ -26,11 +26,11 @@ const Advanced = ({ control, fields, loading }: AdvancedProps) => (
 		type='single'
 		collapsible>
 		<AccordionItem value='item-1'>
-			<AccordionTrigger className='text-teal-500 border-b-[0.33px] border-slate-700'>
+			<AccordionTrigger className='dark:text-indigo-100 text-indigo-500 font-bold border-b-[0.33px] border-slate-700'>
 				Advanced
 			</AccordionTrigger>
 			<AccordionContent className='bg-transparent pt-5 rounded'>
-				<CardContent className='grid grid-cols-2 md:gap-x-10 gap-x-2 gap-y-8'>
+				<CardContent className='grid grid-cols-2 md:gap-x-10 gap-x-2 gap-y-8 px-1'>
 					{fields.map((item) => (
 						<FormField
 							disabled={loading}

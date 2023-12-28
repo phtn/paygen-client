@@ -2,7 +2,7 @@ import { GlobeIcon } from '@radix-ui/react-icons'
 import tw from 'tailwind-styled-components'
 
 const ActiveIcon = tw(GlobeIcon)`
-  text-teal-500 
+  dark:text-indigo-300 text-indigo-500 
 `
 const InactiveIcon = tw(GlobeIcon)`
   text-orange-500 animate-bounce 
@@ -21,7 +21,7 @@ const ActiveStatus = () => (
 	<>
 		<ActiveIcon />
 		<StatusLabel>
-			<code className='text-teal-500'>Online</code>
+			<code className='text-indigo-500 dark:text-indigo-300'>Online</code>
 		</StatusLabel>
 	</>
 )
@@ -32,7 +32,6 @@ const InactiveStatus = () => (
 		<StatusLabel>
 			<code className='text-orange-700 animate-pulse '>Offline</code>
 		</StatusLabel>
-		{/* <GlobeIcon className='animate-pulse text-blue-400' /> */}
 	</>
 )
 

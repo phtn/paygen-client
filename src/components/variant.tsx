@@ -10,14 +10,14 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default:
-					'bg-gradient-to-tr from-indigo-600 from-30% via-indigo-500 via-60% to-indigo-200 disabled:from-indigo-600/50 disabled:to-indigo-200/50 hover:via-100% hover:to-indigo-100 transition-all duration-500 hover:text-orange-100 text-indigo-50',
+					'bg-gradient-to-tr from-indigo-600 from-30% via-indigo-500 via-60% to-indigo-200 disabled:from-gray-500/50 disabled:to-indigo-200/50 hover:via-100% hover:to-indigo-100 transition-all duration-500 hover:text-orange-100 text-indigo-50',
 				destructive:
-					'bg-destructive text-orange-400/80 hover:bg-destructive/90',
+					'bg-destructive dark:text-orange-400/80 text-orange-500/80 hover:text-orange-500',
 				outline:
-					'border border-indigo-400 text-indigo-200 hover:bg-indigo-500/30 hover:text-orange-100 transition-all duration-500',
-				secondary:
-					'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-				ghost: 'hover:bg-accent hover:text-orange-100 text-slate-400',
+					'border border-indigo-400 dark:text-indigo-200 text-indigo-500 dark:hover:bg-indigo-500/30 hover:bg-indigo-300/30 dark:hover:text-orange-100 hover:text-indigo-500 transition-all duration-500',
+				secondary: 'bg-indigo-200 text-indigo-600',
+				ghost:
+					'hover:bg-accent dark:hover:text-orange-100 hover:text-indigo-500 hover:bg-indigo-200/30 text-slate-400',
 				link: 'text-primary underline-offset-4 hover:underline',
 			},
 			size: {

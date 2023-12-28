@@ -16,7 +16,7 @@ const Submit = styled(SubmitButton).attrs<{ width?: number }>({
 `
 
 const InactiveLabel = tw.span`
-  text-indigo-100 font-bold mr-3
+  text-indigo-600 dark:text-indigo-100 font-bold mr-3
 `
 type SubmitProps = {
 	label: string

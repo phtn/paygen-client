@@ -11,7 +11,7 @@ import {
 import { useCallback, useContext, useEffect } from 'react'
 import { AuthContext } from '@context'
 import { useServerStatus } from './hooks'
-import { onSuccess } from '@utils/toast'
+import { onInfo } from '@utils/toast'
 
 const Statusbar = () => {
 	const { user } = useContext(AuthContext)
@@ -19,7 +19,7 @@ const Statusbar = () => {
 
 	useEffect(() => {
 		if (status) {
-			onSuccess('Server online')
+			onInfo('Server online')
 		}
 	}, [status])
 

@@ -25,7 +25,7 @@ export const usePayGen = () => {
 	const createPaymentLink = async (values: CheckoutSchema) => {
 		const Err = (err: Error) => {
 			setLoading(false)
-			onError(err.message)
+			onError(err.name, err.message)
 		}
 		const Ok = async (response: PaymentResponse) => {
 			setLoading(false)
@@ -36,7 +36,7 @@ export const usePayGen = () => {
 		}
 		startTime = performance.now()
 		setLoading(true)
-		await trpc.createLink.query(values).then(Ok, Err)
+		await trpc.createPaymentLink.query(values).then(Ok, Err)
 	}
 
 	return { createPaymentLink, loading, payload }

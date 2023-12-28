@@ -1,6 +1,5 @@
 import { Dispatch, ReactElement, SetStateAction } from 'react'
-import { toast } from 'sonner'
-import { onSuccess } from './toast'
+import { onError, onSuccess, onWarn } from './toast'
 
 export const qe = (...args: ReactElement[]) => {
 	return new Map([
@@ -48,7 +47,7 @@ type CopyFn = (params: CopyFnParams) => Promise<boolean> // Return success
 
 export const copyFn: CopyFn = async ({ name, text }) => {
 	if (!navigator?.clipboard) {
-		toast('Clipboard not supported')
+		onWarn('Clipboard not supported')
 		return false
 	}
 
@@ -57,7 +56,7 @@ export const copyFn: CopyFn = async ({ name, text }) => {
 		onSuccess(`${name ? 'Copied: ' + name : 'Copied.'}`, limitText(text))
 		return true
 	} catch (error) {
-		toast.error('Copy failed.')
+		onError('Copy failed.')
 		return false
 	}
 }

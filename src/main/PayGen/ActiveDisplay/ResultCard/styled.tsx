@@ -10,13 +10,13 @@ const ResultWrap = tw(Display)`
 const Result = styled(ResultWrap)``
 
 const Label = tw.span`
-  text-teal-500 font-bold tracking-tight flex items-center whitespace-nowrap
+  text-indigo-800 text-[10px] md:text-[0.90rem] font-bold tracking-tight flex items-center whitespace-nowrap
 `
 const Content = tw(Flex)`
-  text-slate-500 text-[12px] items-center whitespace-nowrap grow-0 overflow-x-auto text-ellipsis
+  text-slate-800 text-[8px] md:text-[13px] items-center whitespace-nowrap grow-0 overflow-x-auto text-ellipsis
 `
 const Copy = tw(CopyIcon)`
-	mx-3 text-orange-400
+	mx-3 dark:text-orange-600 text-orange-400
 `
 
 const EmailWrap = tw(CardContent)`
@@ -39,14 +39,18 @@ const Uploads = tw.div`
 const FileNameWrap = tw.div`
   text-teal-500 text-[14px] font-bold
   tracking-tight flex items-center justify-between 
-  whitespace-nowrap max-w-[200px] overflow-x-scroll
 `
 const FileName = tw.div`
-  max-w-[175px] overflow-x-scroll
+  flex flex-wrap max-w-[220px] overflow-x-scroll
+`
+
+const FileSize = tw.div`
+  text-slate-400
 `
 const FileType = tw.div`
   uppercase text-slate-500 ml-3
 `
+
 const ActionsWrap = tw(CardFooter)`
   flex justify-between items-center mt-4 w-full
 `
@@ -58,6 +62,7 @@ export {
 	EmailWrap,
 	FileName,
 	FileNameWrap,
+	FileSize,
 	FileType,
 	Label,
 	Result,

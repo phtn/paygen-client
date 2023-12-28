@@ -1,18 +1,23 @@
 import { Flex } from '@radix-ui/themes'
 import Pressable from './Pressable'
+import { decimal, transformDate } from '@utils/helpers'
 
 type TopProps = {
-	copyInvNum: () => void
-	copyInvUrl: () => void
+	amount: number
+	expiry_date: string
 	external_id: string
-	invoice_url: string
+	copyAmount: () => void
+	copyExpiry: () => void
+	copyInvNum: () => void
 }
 
 export const TopItem = ({
+	amount,
+	expiry_date,
 	external_id,
-	invoice_url,
+	copyAmount,
+	copyExpiry,
 	copyInvNum,
-	copyInvUrl,
 }: TopProps) => (
 	<Flex gap={'3'}>
 		<Pressable
@@ -20,11 +25,15 @@ export const TopItem = ({
 			content={external_id}
 			onClick={copyInvNum}
 		/>
-
 		<Pressable
-			label='Payment Link'
-			content={invoice_url}
-			onClick={copyInvUrl}
+			label='Total Amount'
+			content={decimal(amount, 2)}
+			onClick={copyAmount}
+		/>
+		<Pressable
+			label='Expiry Date'
+			content={transformDate(expiry_date)}
+			onClick={copyExpiry}
 		/>
 	</Flex>
 )
