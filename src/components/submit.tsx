@@ -10,13 +10,14 @@ const SubmitButton = tw(Variant)`
 
 const Submit = styled(SubmitButton).attrs<{ width?: number }>({
 	type: 'submit',
+	variant: 'outline',
 	size: 'lg',
 })`
 	width: ${({ width }) => width}px;
 `
 
 const InactiveLabel = tw.span`
-  text-indigo-600 dark:text-indigo-100 font-bold mr-3
+  text-indigo-600 dark:text-indigo-500 font-bold mr-3
 `
 type SubmitProps = {
 	label: string

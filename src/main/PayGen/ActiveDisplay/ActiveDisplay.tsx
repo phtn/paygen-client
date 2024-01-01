@@ -9,6 +9,7 @@ type CustomerData = {
 	data: PaymentResponse | undefined
 	recipient: string
 }
+
 const ActiveDisplay = ({ data, recipient }: CustomerData) => {
 	const values = useData(data)
 
@@ -19,10 +20,11 @@ const ActiveDisplay = ({ data, recipient }: CustomerData) => {
 				values={values}
 				recipient={recipient}
 			/>,
+
 			<PayGenLogo />
 		)
 		return <Display>{options.get(withValues)}</Display>
-	}, [values])
+	}, [values, recipient])
 
 	return <Options />
 }

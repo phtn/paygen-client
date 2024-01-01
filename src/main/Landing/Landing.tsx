@@ -24,7 +24,7 @@ export const Landing = () => {
 		<GridBackground>
 			<User onClick={handleLoginView} />
 			<Aliens />
-			<Arrival />
+			<Arrival t={`top-[calc(100vh-92.6vh)]`} />
 
 			<div className='md:grid md:grid-cols-2 items-center'>
 				<Jumbotron />

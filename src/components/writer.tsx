@@ -36,7 +36,7 @@ export const TypewriterEffect = ({
 				ease: 'easeInOut',
 			}
 		)
-	}, [scope.current])
+	}, [animate])
 
 	const renderWords = () => {
 		return (

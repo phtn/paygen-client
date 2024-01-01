@@ -101,10 +101,10 @@ export type TitleItem = {
 export const useActiveControls = ({ values }: ControllerParams) => {
 	const { amount, external_id, expiry_date, invoice_url, items } = values
 
-	const itemLabels = ['ISO Number', 'Policy Number', 'Assured Name']
 	const [titleProps, setTitleProps] = useState<TitleItem[] | null>()
 
 	useEffect(() => {
+		const itemLabels = ['ISO Number', 'Policy Number', 'Assured Name']
 		if (items) {
 			const itemValues = items[0].name?.split(' · ')
 			const itemPairs = itemValues?.map((value, index) => ({

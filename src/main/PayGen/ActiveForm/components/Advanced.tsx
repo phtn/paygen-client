@@ -26,7 +26,7 @@ const Advanced = ({ control, fields, loading }: AdvancedProps) => (
 		type='single'
 		collapsible>
 		<AccordionItem value='item-1'>
-			<AccordionTrigger className='dark:text-indigo-100 text-indigo-500 font-bold border-b-[0.33px] border-slate-700'>
+			<AccordionTrigger className='dark:text-indigo-100 text-indigo-500 font-bold border-b-[0.33px] dark:border-slate-600 border-indigo-300'>
 				Advanced
 			</AccordionTrigger>
 			<AccordionContent className='bg-transparent pt-5 rounded'>

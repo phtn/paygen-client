@@ -1,30 +1,36 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import { Theme } from '@radix-ui/themes'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { Theme, ThemeOptions } from '@radix-ui/themes'
 import { ThemeProvider } from 'next-themes'
-import '@radix-ui/themes/styles.css'
-import { Toaster } from 'sonner'
 import { AuthProvider } from '@context'
+import { Toaster } from 'sonner'
+import { App } from './App.tsx'
+import '@radix-ui/themes/styles.css'
+import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-	<React.StrictMode>
+const themeProps: ThemeOptions = {
+	appearance: 'light',
+	accentColor: 'indigo',
+	grayColor: 'slate',
+	panelBackground: 'solid',
+	radius: 'small',
+	scaling: '90%',
+}
+
+const toasterProps = {
+	expand: true,
+	richColors: true,
+}
+
+createRoot(document.getElementById('root')!).render(
+	<StrictMode>
 		<ThemeProvider attribute='class'>
-			<Theme
-				appearance='light'
-				accentColor='indigo'
-				grayColor='slate'
-				radius='small'
-				scaling='90%'>
+			<Theme {...themeProps}>
 				<AuthProvider>
 					<App />
 				</AuthProvider>
-				<Toaster
-					expand={true}
-					richColors
-				/>
 			</Theme>
 		</ThemeProvider>
-	</React.StrictMode>
+		<Toaster {...toasterProps} />
+	</StrictMode>
 )

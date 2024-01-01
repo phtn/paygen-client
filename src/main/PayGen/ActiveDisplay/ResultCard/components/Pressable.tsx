@@ -1,7 +1,9 @@
 import { Box, Flex } from '@radix-ui/themes'
 import { ReactNode } from 'react'
-import { Content, Copy, Label } from '../styled'
+import { Label } from '../styled'
 import { Card } from '@components/card'
+import tw from 'tailwind-styled-components'
+import { CopyIcon } from '@radix-ui/react-icons'
 
 type PressableProps = {
 	children?: ReactNode
@@ -11,9 +13,7 @@ type PressableProps = {
 }
 
 const Pressable = ({ content, label, onClick }: PressableProps) => (
-	<Card
-		className='flex-auto article cursor-pointer py-2 px-4 border-0 bg-gradient-to-tr from-indigo-400 to-orange-50'
-		onClick={onClick}>
+	<Container onClick={onClick}>
 		<Flex
 			gap={'3'}
 			align={'center'}>
@@ -22,10 +22,21 @@ const Pressable = ({ content, label, onClick }: PressableProps) => (
 					{label}
 					<Copy />
 				</Label>
-				<Content>{content}</Content>
+				<Value>{content}</Value>
 			</Box>
 		</Flex>
-	</Card>
+	</Container>
 )
+
+const Container = tw(Card)`
+	flex-auto rounded-sm cursor-pointer py-2 px-4 border-0 bg-gradient-to-tr from-indigo-300/80 to-indigo-100
+`
+const Copy = tw(CopyIcon)`
+	mx-3 text-transparent/40
+`
+
+const Value = tw.div`
+  text-indigo-800 text-[8px] md:text-[13px] items-center whitespace-nowrap grow-0 overflow-x-auto text-ellipsis
+`
 
 export default Pressable

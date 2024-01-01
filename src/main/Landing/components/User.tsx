@@ -1,13 +1,14 @@
+import { Variant } from '@components/variant'
 import { AvatarIcon } from '@radix-ui/react-icons'
-import { IconButton } from '@radix-ui/themes'
 
 export const User = ({ onClick }: { onClick: () => void }) => (
-	<div className='absolute top-[calc(100vh-97vh)] left-[calc(100vw-50px)]'>
-		<IconButton
-			variant='ghost'
+	<div className='absolute top-[calc(100vh-98vh)] w-screen flex justify-end'>
+		<Variant
+			className='mx-6'
 			onClick={onClick}
-			size='4'>
+			size='icon'
+			variant='ghost'>
 			<AvatarIcon className='h-[20px] w-[20px]' />
-		</IconButton>
+		</Variant>
 	</div>
 )

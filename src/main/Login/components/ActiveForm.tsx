@@ -3,12 +3,50 @@ import { FormType, LoginField, LoginSchema } from '../schema'
 import { useCallback } from 'react'
 import { SubmitAction } from '@components/submit'
 import { Input } from '@components/input'
+import { Control, ControllerRenderProps } from 'react-hook-form'
 
 type ActiveFormProps = {
 	form: FormType
 	loading: boolean
 	loginFields: LoginField[]
 	onSubmit: (values: LoginSchema) => void
+}
+
+type RenderProps = {
+	field: ControllerRenderProps<LoginSchema>
+	item: LoginField
+}
+
+type FieldProps = {
+	fields: LoginField[]
+	loading: boolean
+	control: Control<LoginSchema>
+}
+
+const render = ({ field, item }: RenderProps) => (
+	<FormItem className='my-4'>
+		<FormLabel>{item.label}</FormLabel>
+		<FormControl>
+			<Input
+				alt={item.alt}
+				placeholder={item.placeholder}
+				type={item.type}
+				{...field}
+			/>
+		</FormControl>
+	</FormItem>
+)
+
+const Fields = ({ control, fields, loading }: FieldProps) => {
+	return fields.map((item) => (
+		<FormField
+			key={item.name}
+			disabled={loading}
+			control={control}
+			name={item.name}
+			render={({ field }) => render({ field, item })}
+		/>
+	))
 }
 
 export const ActiveForm = ({
@@ -29,30 +67,15 @@ export const ActiveForm = ({
 				loading={loading}
 			/>
 		)
-	}, [loading, formState.isValid])
+	}, [loading, isValid])
+
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
-			{loginFields.map((item) => (
-				<FormField
-					key={item.name}
-					disabled={loading}
-					control={control}
-					name={item.name}
-					render={({ field }) => (
-						<FormItem className='my-4'>
-							<FormLabel>{item.label}</FormLabel>
-							<FormControl>
-								<Input
-									alt={item.alt}
-									placeholder={item.placeholder}
-									type={item.type}
-									{...field}
-								/>
-							</FormControl>
-						</FormItem>
-					)}
-				/>
-			))}
+			<Fields
+				control={control}
+				fields={loginFields}
+				loading={loading}
+			/>
 			<Submit />
 		</form>
 	)

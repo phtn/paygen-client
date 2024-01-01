@@ -1,4 +1,5 @@
 const svgToDataUri = require('mini-svg-data-uri')
+// import { svgToDataUri } from 'mini-svg-data-uri'
 
 const {
 	default: flattenColorPalette,
@@ -23,6 +24,13 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
+			},
+			backgroundSize: {
+				'size-200': '200% 200%',
+			},
+			backgroundPosition: {
+				'pos-0': '0% 0%',
+				'pos-100': '100% 100%',
 			},
 		},
 		clipPath: {

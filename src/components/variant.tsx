@@ -10,14 +10,16 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default:
-					'bg-gradient-to-tr from-indigo-600 from-30% via-indigo-500 via-60% to-indigo-200 disabled:from-gray-500/50 disabled:to-indigo-200/50 hover:via-100% hover:to-indigo-100 transition-all duration-500 hover:text-orange-100 text-indigo-50',
+					'bg-gradient-to-tr from-indigo-700 via-indigo-500 to-indigo-400 transition-all duration-500 bg-size-200 bg-pos-0 hover:bg-pos-100',
 				destructive:
 					'bg-destructive dark:text-orange-400/80 text-orange-500/80 hover:text-orange-500',
 				outline:
-					'border border-indigo-400 dark:text-indigo-200 text-indigo-500 dark:hover:bg-indigo-500/30 hover:bg-indigo-300/30 dark:hover:text-orange-100 hover:text-indigo-500 transition-all duration-500',
+					'border border-indigo-400 dark:text-indigo-200 text-indigo-500 dark:hover:bg-indigo-500/20 hover:bg-indigo-300/30 dark:hover:text-orange-100 hover:text-indigo-500 transition-all duration-500',
 				secondary: 'bg-indigo-200 text-indigo-600',
 				ghost:
-					'hover:bg-accent dark:hover:text-orange-100 hover:text-indigo-500 hover:bg-indigo-200/30 text-slate-400',
+					'dark:hover:text-orange-100 hover:text-indigo-500 text-slate-400 text-center',
+				casper:
+					'dark:hover:bg-black/10 dark:text-orange-200 hover:text-red-800 hover:bg-indigo-200/30 hover:scale-[85%] transition-all duration-500 text-red-400 text-center',
 				link: 'text-primary underline-offset-4 hover:underline',
 			},
 			size: {
@@ -25,6 +27,7 @@ const buttonVariants = cva(
 				sm: 'h-9 rounded-md px-3',
 				lg: 'h-11 rounded-md px-8',
 				icon: 'h-10 w-10',
+				xs: 'p-[2px] rounded-[3px]',
 			},
 		},
 		defaultVariants: {

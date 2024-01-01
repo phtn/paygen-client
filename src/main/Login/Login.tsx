@@ -7,7 +7,6 @@ import { User } from 'firebase/auth'
 import { Container, SignInContent } from './styled'
 import { LoginSchema, loginDefaults, loginSchema } from './schema'
 import { LoginForm } from './components/LoginForm'
-import { Header } from '@components/header'
 import { SubmitAction } from '@components/submit'
 import { qe } from '@utils/helpers'
 import { AvatarIcon } from '@radix-ui/react-icons'
@@ -74,7 +73,7 @@ const Login = () => {
 		<Container>
 			<Flex className='items-center'>
 				<AvatarIcon className=' mb-7 h-[24px] w-[24px] mr-2 text-indigo-400' />
-				<Header title='Login to your account' />
+				<p className='text-[24px] mb-7'>Login to your account</p>
 			</Flex>
 			<Card className='md:w-[350px] border-0 w-full h-fit'>
 				<Tabs.Root defaultValue='signin'>

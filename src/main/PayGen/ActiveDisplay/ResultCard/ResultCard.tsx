@@ -7,6 +7,7 @@ import { EmailContent } from './components/EmailContent'
 import { Actions } from './components/Actions'
 import { Title } from './components/Title'
 import { TextAlignRightIcon } from '@radix-ui/react-icons'
+import { SectionLabel } from '@components/label'
 
 export const ResultCard = ({ values, recipient }: ResultProps) => {
 	const {
@@ -23,9 +24,9 @@ export const ResultCard = ({ values, recipient }: ResultProps) => {
 	return (
 		<Result>
 			<Title titleProps={titleProps} />
-			<div className='text-[12px] mb-2 flex items-center'>
-				<TextAlignRightIcon className='text-slate-400 mr-1' /> Details
-			</div>
+			<SectionLabel label='Details'>
+				<TextAlignRightIcon />
+			</SectionLabel>
 			<TopItem {...topProps} />
 			<MidItem {...midProps} />
 

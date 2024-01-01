@@ -14,15 +14,14 @@ const AuthedPage = () => (
 	</VStack>
 )
 
-const App = () => {
+export const App = () => {
 	const { user } = useContext(AuthContext)
 
-	const PageOptions = useCallback(() => {
+	const HomwpageOptions = useCallback(() => {
 		const isAuthed = Object.keys(user || {}).length > 0
 		const options = qe(<AuthedPage />, <Landing />)
 		return <>{options.get(isAuthed)}</>
 	}, [user])
 
-	return <PageOptions />
+	return <HomwpageOptions />
 }
-export default App

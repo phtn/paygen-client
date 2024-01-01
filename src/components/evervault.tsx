@@ -1,4 +1,4 @@
-import { useMotionValue } from 'framer-motion'
+import { useMotionValue, MotionValue } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { useMotionTemplate, motion } from 'framer-motion'
 import { cn } from '@utils/cn'
@@ -13,18 +13,24 @@ export const EvervaultCard = ({
 	subtext?: string
 	className?: string
 }) => {
-	let mouseX = useMotionValue(0)
-	let mouseY = useMotionValue(0)
+	const mouseX = useMotionValue(0)
+	const mouseY = useMotionValue(0)
 
 	const [randomString, setRandomString] = useState('')
 
 	useEffect(() => {
-		let str = generateRandomString(1500)
+		const str = generateRandomString(1500)
 		setRandomString(str)
 	}, [])
 
-	function onMouseMove({ currentTarget, clientX, clientY }: any) {
-		let { left, top } = currentTarget.getBoundingClientRect()
+	type MouseMove = {
+		currentTarget: Element
+		clientX: number
+		clientY: number
+	}
+
+	function onMouseMove({ currentTarget, clientX, clientY }: MouseMove) {
+		const { left, top } = currentTarget.getBoundingClientRect()
 		mouseX.set(clientX - left)
 		mouseY.set(clientY - top)
 
@@ -60,9 +66,15 @@ export const EvervaultCard = ({
 	)
 }
 
-export function CardPattern({ mouseX, mouseY, randomString }: any) {
-	let maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`
-	let style = { maskImage, WebkitMaskImage: maskImage }
+type PatternParams = {
+	mouseX: MotionValue<number>
+	mouseY: MotionValue<number>
+	randomString: string
+}
+
+export function CardPattern({ mouseX, mouseY, randomString }: PatternParams) {
+	const maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`
+	const style = { maskImage, WebkitMaskImage: maskImage }
 
 	return (
 		<div className='pointer-events-none'>
@@ -85,7 +97,7 @@ export function CardPattern({ mouseX, mouseY, randomString }: any) {
 
 // const characters =
 // 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-const characters = '0ネ1オ0ど1こ0に1い0る1の?'
+const characters = '10ネ01オ10'
 export const generateRandomString = (length: number) => {
 	let result = ''
 	for (let i = 0; i < length; i++) {
@@ -94,21 +106,21 @@ export const generateRandomString = (length: number) => {
 	return result
 }
 
-export const Icon = ({ className, ...rest }: any) => {
-	return (
-		<svg
-			xmlns='http://www.w3.org/2000/svg'
-			fill='none'
-			viewBox='0 0 24 24'
-			strokeWidth='1.5'
-			stroke='currentColor'
-			className={className}
-			{...rest}>
-			<path
-				strokeLinecap='round'
-				strokeLinejoin='round'
-				d='M12 6v12m6-6H6'
-			/>
-		</svg>
-	)
-}
+//export const Icon = ({ className, ...rest }: any) => {
+//	return (
+//		<svg
+//			xmlns='http://www.w3.org/2000/svg'
+//			fill='none'
+//			viewBox='0 0 24 24'
+//			strokeWidth='1.5'
+//			stroke='currentColor'
+//			className={className}
+//			{...rest}>
+//			<path
+//				strokeLinecap='round'
+//				strokeLinejoin='round'
+//				d='M12 6v12m6-6H6'
+//			/>
+//		</svg>
+//	)
+//}

@@ -71,7 +71,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 )
 Input.displayName = 'Input'
 
-export type SearchProps = React.InputHTMLAttributes<HTMLInputElement>
 
 const Search = React.forwardRef<HTMLInputElement, InputProps>(
 	({ className, ...props }, ref) => {
