@@ -17,12 +17,11 @@ const EmailWrap = tw(Card)`
   grid grid-cols-3 gap-4
 `
 const TextAreaComponent = tw(TextArea)`
-  h-[300px]
+  h-[280px]
 `
 const MessageArea = styled(TextAreaComponent).attrs({
 	name: 'message',
 	placeholder: 'Write a custom message to include in the email. (Optional)',
-	resize: true,
 })``
 
 const MessageWrap = tw.div`

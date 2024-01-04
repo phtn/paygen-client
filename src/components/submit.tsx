@@ -17,7 +17,7 @@ const Submit = styled(SubmitButton).attrs<{ width?: number }>({
 `
 
 const InactiveLabel = tw.span`
-  text-indigo-600 dark:text-indigo-500 font-bold mr-3
+  text-indigo-600 dark:text-slate-800 font-bold mr-3
 `
 type SubmitProps = {
 	label: string
@@ -41,7 +41,7 @@ type SubmitActionProps = {
 	inactiveLabel: string
 	isValid?: boolean
 	loading: boolean
-	onClick?: (param?: any) => void
+	onClick?: (param?: string | number | undefined) => void
 	width?: number
 }
 

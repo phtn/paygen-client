@@ -6,6 +6,7 @@ type RenderItemFunction<T> = (item: T, index?: number) => ReactElement
 type KeyExtractorFunction<T> = (item: T, index: number) => string
 
 interface FlatListProps<T> {
+  bgcolor?: string
 	data: T[] | null
 	renderItem: RenderItemFunction<T>
 	keyExtractor: KeyExtractorFunction<T>
@@ -34,10 +35,11 @@ const Vertical = <T,>({ data, renderItem, keyExtractor }: FlatListProps<T>) => (
 	</Box>
 )
 
+
 function FlatList<T>(props: FlatListProps<T>) {
 	const View = () => {
 		const options = qe(<Horizontal {...props} />, <Vertical {...props} />)
-		return <>{options.get(props.horizontal ?? false)}</>
+		return <Box className={props.bgcolor}>{options.get(props.horizontal ?? false)}</Box>
 	}
 	return <View />
 }

@@ -65,18 +65,29 @@ export const useEmailHandler = ({ recipient, values }: EmailHandlerParams) => {
 			cc: null,
 			subject: 'Test email',
 			text: message,
-			html: null,
-			attachments: null,
+			html: `<h1>${recipient} link: ${values.invoice_url}</h1>`,
+			attachments: files,
 		}
+
 		const Ok = (response: string) => {
 			setLoading(false)
 			onSuccess(response, `Recipient: ${params.to}`)
+      console.log(params)
 		}
+
 		const Err = (err: Error) => {
 			setLoading(false)
 			onError(err.name, err.message)
 		}
-		trpc.sendEmail.query(values).then(Ok, Err)
+
+		const Test = () => {
+			setLoading(false)
+			onSuccess('Success', `Recipient: ${params.to}`)
+      console.log(params)
+		}
+
+		trpc.sendEmail.query(params).then(Ok, Err)
+    Test()
 	}
 
 	return {

@@ -14,7 +14,7 @@ const buttonVariants = cva(
 				destructive:
 					'bg-destructive dark:text-orange-400/80 text-orange-500/80 hover:text-orange-500',
 				outline:
-					'border border-indigo-400 dark:text-indigo-200 text-indigo-500 dark:hover:bg-indigo-500/20 hover:bg-indigo-300/30 dark:hover:text-orange-100 hover:text-indigo-500 transition-all duration-500',
+					'border border-indigo-400 dark:text-indigo-200 text-indigo-500 disabled:text-slate-600 dark:hover:bg-indigo-500/20 hover:bg-indigo-300/30 dark:hover:text-orange-100 hover:text-indigo-500 transition-all duration-500 disabled:border-slate-800',
 				secondary: 'bg-indigo-200 text-indigo-600',
 				ghost:
 					'dark:hover:text-orange-100 hover:text-indigo-500 text-slate-400 text-center',
@@ -57,4 +57,4 @@ const Variant = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Variant.displayName = 'Variant'
 
-export { Variant, buttonVariants }
+export { Variant }

@@ -1,4 +1,6 @@
-const static_data: any = {
+import { PaymentResponse } from "@sources/payment"
+
+export const static_data: PaymentResponse = {
 	id: '658c8c088013d700e17c6de6',
 	external_id: 'INV-3345-41f9-b46b',
 	user_id: '656539e932ded2e737c90b75',

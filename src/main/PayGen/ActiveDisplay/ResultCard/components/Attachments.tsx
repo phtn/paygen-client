@@ -34,10 +34,11 @@ export const Attachments = ({ data, fileRemove }: AttachmentProps) => {
 		<Uploads>
 			<SectionLabel
 				label='Attachments'
-				extra={`[${data?.length}]`}>
+				extra={`[${data?.length || 0}]`}>
 				<FileTextIcon />
 			</SectionLabel>
 			<FlatList
+        bgcolor='h-full bg-black/20'
 				data={data}
 				keyExtractor={(item, index) =>
 					`${item.name || `${Date.now().toString(20)}`}_${index}`

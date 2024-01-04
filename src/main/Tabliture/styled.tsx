@@ -28,7 +28,7 @@ const Home = styled(TabContent).attrs<TC>({
 	value: 'home',
 })``
 
-const Reports = styled(TabContent).attrs<TC>({
+const ReportsWrap = styled(TabContent).attrs<TC>({
 	value: 'reports',
 })``
 
@@ -40,4 +40,4 @@ const ProfileWrap = styled(TabContent).attrs<TC>({
 	value: 'profile',
 })``
 
-export { Content, Home, ProfileWrap, Reports, Settings, Tab, Trigger }
+export { Content, Home, ProfileWrap, ReportsWrap, Settings, Tab, Trigger }

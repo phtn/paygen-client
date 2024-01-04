@@ -1,7 +1,8 @@
 import { Tabs } from '@radix-ui/themes'
-import { Content, Reports, Settings, Tab, Trigger } from './styled'
+import { Content, Settings, Tab, Trigger } from './styled'
 import PayGen from '../PayGen'
 import { Profile } from '../Profile/Profile'
+import Reports from '../Reports'
 
 const Beam = () => (
 	<div className='w-screen'>
@@ -25,9 +26,7 @@ const Tabliture = () => (
 		<Content>
 			<PayGen />
 
-			<Reports>
-				<span>Access and update your reports.</span>
-			</Reports>
+			<Reports/>
 
 			<Settings>
 				<span>Edit your profile or update contact information.</span>
